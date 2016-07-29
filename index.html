@@ -9,44 +9,37 @@
     <script src="https://rawgit.com/ngokevin/aframe-look-at-component/master/dist/aframe-look-at-component.min.js"></script>
     <script src="https://rawgit.com/ngokevin/aframe-layout-component/master/dist/aframe-layout-component.min.js"></script>
     <script src="https://rawgit.com/ngokevin/aframe-text-component/master/dist/aframe-text-component.min.js"></script>
-    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v2.1.0/dist/aframe-extras.min.js"></script>
-    <script src="https://github.com/ngokevin/aframe-physics-components/blob/master/dist/aframe-physics-components.min.js"></script>
-    <script src="dist/aframe-cubemap-component.js"></script>
-    <!-- for Chrome -->
-    <!--script src="https://rawgit.com/aframevr/aframe/master/dist/aframe.min.js"></script-->
-    <script src="https://rawgit.com/andreasplesch/aframe-faceset-component/master/dist/aframe-faceset-component.min.js"></script>
-    <script src="https://rawgit.com/andreasplesch/aframe-star-component/master/dist/aframe-star-component.min.js"></script>
   </head>
 
   <body>
-  <a-scene fog="type: linear; color: #020202; far: 24; near: 6">
+  <a-scene>
     <a-assets>
       <img id="floor" src="./img/noisy-texture.png">
       <img id="logo" src="./img/logo.jpg">
       <img id="redirect" src="./img/redirect.png">
-      <img id="sky" src="./img/sky.png">
+      <img id="sky" src="./img/sky.jpg">
       <a-asset-item id="github-obj" src="./models/social/github.obj"></a-asset-item>
     </a-assets>
-    <a-entity cubemap="folder: /assets/skybox/; edgeLength: 100"></a-entity>
-    <a-entity star="points: 23" width="1"></a-entity>
-    <a-entity star="points: 3" width="1"></a-entity>
-    <a-entity star="points: 14" width="1"></a-entity>
-    <a-entity star="points: 23" width="1" position:""></a-entity>
+    <a-plane color="#CCC" height="1" width="3" position="0 4 2 ">
+      <!-- <a-animation attribute="rotation" from="0 0 0" to="0 360 0" dur="2000"></a-animation> -->
+    </a-plane>
     <a-entity
       id="avatar"
       camera wasd-controls
       look-controls="enabled: true"
       position="0 2.5 4.75"
     >
-      <a-cursor id="cursor" color="#4CC3D9" fuse="true" maxDistance="20" timeout="3000"></a-cursor>
+      <a-cursor id="cursor" color="#4CC3D9" fuse="true" maxDistance="20" timeout="4000"></a-cursor>
     </a-entity>
 
-    <a-image src="#logo"  width="5" height="5" position="0 3.2 0" opacity="0">
-      <a-animation attribute="opacity" begin="500" dur="200" from="0" to="1"></a-animation>
-      <a-animation attribute="position" from="0 3.2 0" to="0 2.6 0" dur="5000" ></a-animation>
+    <a-image src="#logo"  width="5" height="5" position="0 3.2 9" opacity="1" rotation="0 180 0">
+      <!-- <a-animation attribute="opacity" begin="500" dur="200" from="0" to="1"></a-animation>
+      <a-animation attribute="position" from="0 3.2 0" to="0 2.6 0" dur="5000" ></a-animation> -->
     </a-image>
     <a-ocean color="#92E2E2" width="25" depth="25" density="15" speed="2" rotation="-90 0 0"></a-ocean>
-    <!-- <a-sky src="#sky"></a-sky> -->
+    <a-sky src="#sky" rotation="0 -130 0" radius= "3500">
+      <a-animation attribute="rotation" from="0 0 0" to="0 0 25" dur="25000" repeat="indefinite"></a-animation>
+    </a-sky>
 
     <!-- <a-plane static-body width="100" height="100" rotation="-90 0 0" position="0 0 0" material="src: #floor; roughness: .5; metalness: 0; opacity: 1; repeat: 100 100" ></a-plane> -->
 
@@ -57,6 +50,10 @@
   </a-scene>
 
     <script>
+      document.querySelector('#github').addEventListener('click', function () {
+        window.location = "#location1";
+      });
+
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
