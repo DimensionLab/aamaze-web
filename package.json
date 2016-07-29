@@ -3,7 +3,7 @@
   "description": "Boilerplate for creating WebVR scenes using A-Frame",
   "version": "0.0.0",
   "license": "MIT",
-  "repository": "git@github.com:DimensionLab/web.git",
+  "repository": "git@github.com:DimensionLab/aamaze-web.git",
   "scripts": {
     "start": "budo --live --verbose --port 3000 --open",
     "deploy": "ghpages",
