@@ -1,0 +1,23 @@
+{
+  "name": "aframe-boilerplate",
+  "description": "Boilerplate for creating WebVR scenes using A-Frame",
+  "version": "0.0.0",
+  "license": "MIT",
+  "repository": "git@github.com:DimensionLab/aamaze-web.git",
+  "scripts": {
+    "start": "budo --live --verbose --port 3000 --open",
+    "deploy": "ghpages",
+    "ghpages": "ghpages"
+  },
+  "devDependencies": {
+    "aframe-draw-shader": "^0.1.3",
+    "budo": "^7.0.0",
+    "ghpages": "0.0.3"
+  },
+  "keywords": [
+    "aframe",
+    "aframe-example",
+    "aframe-scene",
+    "aframe-boilerplate"
+  ]
+}
