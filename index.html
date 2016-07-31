@@ -26,7 +26,8 @@
     <script src="https://rawgit.com/ngokevin/aframe-layout-component/master/dist/aframe-layout-component.min.js"></script>
     <script src="https://rawgit.com/ngokevin/aframe-text-component/master/dist/aframe-text-component.min.js"></script>
     <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
-    <script src="https://github.com/nylki/aframe-fit-texture-component/raw/master/dist/aframe-fit-texture-component.min.js"></script>
+    <script src="js/aframe-fit-texture-component.min.js"></script>
+    <script src="js/aframe-htmltexture-component.min.js"></script>
 
     <script src="js/components/isvr_photosphere_menu.js"></script>
     <script src="js/components/isvr_photosphere_menu_thumb.js"></script>
@@ -43,7 +44,7 @@
       <img id="logo" src="./img/logo.jpg">
       <img id="redirect" src="./img/redirect.png">
       <img id="sky" src="./img/sky.jpg">
-
+      <img src="./img/AM polygon.png" id="polygon">
       <img id="ui1" src="./img/ui1.png">
       <img id="ui2" src="./img/ui2.png">
       <img id="ui3" src="./img/ui3.png">
@@ -74,7 +75,9 @@
                 </a-entity>
             </a-entity>
         </a-entity>
-
+        <a-entity position= "0 10 0" visible="false">
+     <a-sky src="#pano1" rotation="0 -130 0"></a-sky>
+    </a-entity>
 
         <a-entity data-current-page="1" isvr-photosphere-menu id="photosphere-menu" visible="false">
             <a-entity bmfont-text="text: Hello world; width: 1000" position="-0.5 2 1"></a-entity>
@@ -109,17 +112,28 @@
             </a-image>
 
 
-            <a-image data-image-id="5" isvr-photosphere-menu-thumb class="img-photosphere-thumb" src="#img-photosphere-3-thumb" width="2" height="0.4" position="0 -0.6 0">
-                <a-animation attribute="position" begin="mouseenter" from="0 -0.6 0" to="0 -0.6 0.5" dur="400"></a-animation>
-                <a-animation attribute="position" begin="mouseleave" from="0 -0.6 0.5" to="0 -0.6 0" dur="400"></a-animation>
+            <a-image data-image-id="5" isvr-photosphere-menu-thumb class="img-photosphere-thumb" src="#img-photosphere-3-thumb" width="2" height="0.4" position="0 -0.7 0">
+                <a-animation attribute="position" begin="mouseenter" from="0 -0.7 0" to="0 -0.7 0.5" dur="400"></a-animation>
+                <a-animation attribute="position" begin="mouseleave" from="0 -0.7 0.5" to="0 -0.7 0" dur="400"></a-animation>
                 <a-animation attribute="material.opacity" begin="fade" to="1"></a-animation>
             </a-image>
 
-            <a-image data-image-id="4" isvr-photosphere-menu-thumb class="img-photosphere-thumb" src="#img-photosphere-3-thumb" width="2" height="0.4" position="0 -1.3 0">
+            <a-image data-image-id="6" isvr-photosphere-menu-thumb class="img-photosphere-thumb" src="#img-photosphere-3-thumb" width="2" height="0.4" position="0 -1.3 0">
                 <a-animation attribute="position" begin="mouseenter" from="0 -1.3 0" to="0 -1.3 0.5" dur="400"></a-animation>
                 <a-animation attribute="position" begin="mouseleave" from="0 -1.3 0.5" to="0 -1.3 0" dur="400"></a-animation>
+                <a-animation attribute="rotation" begin="mouseenter" from="0 0 0" to="-30 0 0" dur="400"></a-animation>
+                <a-animation attribute="rotation" begin="mouseleave" from="-30 0 0" to="0 0 0" dur="400"></a-animation>
                 <a-animation attribute="material.opacity" begin="fade" to="1"></a-animation>
             </a-image>
+
+            <a-image src="#logo" fit-texure scale="1.0" position="0 0 5.4" rotation="0 180 0">
+            </a-image>
+
+            <a-entity  id="clockentity" position="0 -0.5 5.0" rotation="0 180 0" geometry="primitive: plane; height:0.2" material="src: #polygon" fit-texture">
+
+            </a-entity>
+
+
 
             <!-- <a-entity isvr-photosphere-menu-navigation="url:https://www.ideaspacevr.org/webvr-photosphere-viewer-equirectangular-images/field-data?key=images_upload&chunk-size=3&page=2" id="menu-arrow-down" position="0 -1.5 0" visible=" true ">
                 <a-plane position="-0.07 0 0" rotation="0 0 45" width="0.10" height="0.3" color="#5b00f4"></a-plane>
@@ -129,11 +143,18 @@
 
 
 
-        <a-entity
+        <a-entity id="scene1"
             geometry="primitive:sphere;radius:5000;segmentsWidth:64;segmentsHeight:64"
             material="shader:flat;color:#ffffff;fog:false; src:#img-photosphere-1 "
             scale="-1 1 1"
             rotation="0 -60 0" id="photosphere">
+            <a-cube color="red" onclick="nextScene()"> </a-cube>
+        </a-entity>
+
+        <a-entity id="scene2" visible="false">
+          <a-cube color="green" position="0 2 -5"> </a-cube>
+          <a-cube color="yellow" position="5 0 -5"> </a-cube>
+          <a-cube color="blue" position="0 0 -1"> </a-cube>
         </a-entity>
 
 
@@ -141,12 +162,11 @@
       // document.querySelector('#id').addEventListener('click', function () {
       //   window.location = "#location1";
       // });
-
-      var el = document.querySelector('#mario');
-      var s1 = document.querySelector('#scene1');
-      var s2 = document.querySelector('#scene2');
-      var s3 = document.querySelector('#scene3');
-      var s4 = document.querySelector('#scene4');
+      //
+      function nextScene() {
+          document.getElementById('scene1').setAttribute('visible', 'false')
+          document.getElementById('scene2').setAttribute('visible', 'true')
+        }
 
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -157,6 +177,42 @@
 
 
     </script>
+    <script>
+      var deadline = '2016-8-10';
 
+      function getTimeRemaining(endtime){
+        var t = Date.parse(endtime) - Date.parse(new Date());
+        var seconds = Math.floor( (t/1000) % 60 );
+        var minutes = Math.floor( (t/1000/60) % 60 );
+        var hours = Math.floor( (t/(1000*60*60)) % 24 );
+        var days = Math.floor( t/(1000*60*60*24) );
+        return {
+          'total': t,
+          'days': days,
+          'hours': hours,
+          'minutes': minutes,
+          'seconds': seconds
+        };
+      }
+
+      function initializeClock(id, endtime){
+        var clock = document.getElementById(id);
+        var timeinterval = setInterval(function(){
+          var t = getTimeRemaining(endtime);
+          clock.innerHTML = 'days: ' + t.days + '<br>' +
+                            'hours: '+ t.hours + '<br>' +
+                            'minutes: ' + t.minutes + '<br>' +
+                            'seconds: ' + t.seconds;
+          if(t.total<=0){
+            clearInterval(timeinterval);
+          }
+        },1000);
+      }
+      window.onload = function()
+      {
+          initializeClock('clockentity', deadline);
+      }
+
+    </script>
   </body>
 </html>
