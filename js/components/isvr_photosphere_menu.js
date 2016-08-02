@@ -3,7 +3,7 @@ AFRAME.registerComponent('isvr-photosphere-menu', {
     init: function() {
 
       window.addEventListener('touchstart', this.onClick.bind(this));
-      window.addEventListener('keyup', this.onKeyup.bind(this)); 
+      window.addEventListener('keyup', this.onKeyup.bind(this));
 
       this.yaxis = new THREE.Vector3(0, 1, 0);
       this.zaxis = new THREE.Vector3(0, 0, 1);
@@ -44,9 +44,10 @@ AFRAME.registerComponent('isvr-photosphere-menu', {
         direction.normalize();
 
         this.pivot.quaternion.setFromUnitVectors(this.zaxis, direction);
-        this.pivot.position.copy(document.querySelector('#camera').object3D.getWorldPosition()); 
+        this.pivot.position.copy(document.querySelector('#camera').object3D.getWorldPosition());
 
         this.el.setAttribute('visible', true);
+        document.querySelector('#cursor-main').setAttribute('visible', false);
         document.querySelector('#cursor').setAttribute('visible', true);
 
       }
