@@ -3,7 +3,7 @@ AFRAME.registerComponent('isvr-photosphere-menu-thumb', {
     init: function() {
 
       this.el.addEventListener('click', this.onClick.bind(this));
-      
+
     },
 
     onClick: function(evt) {
@@ -18,9 +18,8 @@ AFRAME.registerComponent('isvr-photosphere-menu-thumb', {
 
         /* keep menu if material is the same */
         if (document.querySelector('#photosphere').getAttribute('material').src != id) {
-
           document.querySelector('#photosphere-menu').setAttribute('visible', false);
-          document.querySelector('#cursor').setAttribute('visible', false);
+          document.querySelector('#cursor-main').setAttribute('visible', true);
           document.querySelector('#photosphere').setAttribute('material', 'src', id);
 
         }
