@@ -55,11 +55,14 @@
       <img src="./img/pano/PANO_20160726_162209.jpg" id="img-photosphere-1">
       <img src="./img/AM logo.png" id="img-photosphere-1-thumb">
       <img src="images/tXP1XaC9ShZL5s8bIY001NygnKSJrUofLCkJUlurOzB8El5YDEi7p34cFlxz.jpg" id="img-photosphere-2">
-      <img src="images/tXP1XaC9ShZL5s8bIY001NygnKSJrUofLCkJUlurOzB8El5YDEi7p34cFlxz_thumb.jpg" id="img-photosphere-2-thumb">
+      <img src="./img/location1.jpg" id="img-photosphere-2-thumb">
       <img src="images/HlwFJ3VKh2Vt7aA5rLWyxrjFQuOzYOMHcC8vOWef36C8M81RM06EBPMelHh0.jpg" id="img-photosphere-3">
-      <img src="images/HlwFJ3VKh2Vt7aA5rLWyxrjFQuOzYOMHcC8vOWef36C8M81RM06EBPMelHh0_thumb.jpg" id="img-photosphere-3-thumb">
+      <img src="./img/locaton2.jpg" id="img-photosphere-3-thumb">
+      <img src="./img/locaton2.jpg" id="img-photosphere-4-thumb">
+      <img src="./img/program.jpg" id="img-photosphere-5-thumb">
+      <img src="./img/artists.jpg" id="img-photosphere-6-thumb">
 
-      <audio id="aztek" src="./aamaze-sound/Aztek-FromYou.mp3">
+      <!-- <audio id="aztek" src="./aamaze-sound/Aztek-FromYou.mp3"> -->
     </a-assets>
 
     <a-entity position="0 1.8 5">
@@ -109,27 +112,27 @@
           <a-animation attribute="material.opacity" begin="fade" to="1"></a-animation>
       </a-image>
 
-      <a-image data-image-id="3" isvr-photosphere-menu-thumb class="img-photosphere-thumb" src="#img-photosphere-2-thumb" width="1" height="0.7" position="-0.5 0 0">
+      <a-image data-image-id="3" isvr-photosphere-menu-thumb class="img-photosphere-thumb" src="#img-photosphere-3-thumb" width="1" height="0.7" position="-0.5 0 0">
           <a-animation attribute="position" begin="mouseenter" from="-0.5 0 0" to="-0.5 0 0.5" dur="400"></a-animation>
           <a-animation attribute="position" begin="mouseleave" from="-0.5 0 0.5" to="-0.5 0 0" dur="400"></a-animation>
           <a-animation attribute="material.opacity" begin="fade" to="1"></a-animation>
       </a-image>
 
 
-      <a-image data-image-id="4" isvr-photosphere-menu-thumb class="img-photosphere-thumb" src="#img-photosphere-2-thumb" width="1" height="0.7" position="0.6 0 0">
+      <a-image data-image-id="4" isvr-photosphere-menu-thumb class="img-photosphere-thumb" src="#img-photosphere-4-thumb" width="1" height="0.7" position="0.6 0 0">
           <a-animation attribute="position" begin="mouseenter" from="0.6 0 0" to="0.6 0 0.5" dur="400"></a-animation>
           <a-animation attribute="position" begin="mouseleave" from="0.6 0 0.5" to="0.6 0 0" dur="400"></a-animation>
           <a-animation attribute="material.opacity" begin="fade" to="1"></a-animation>
       </a-image>
 
 
-      <a-image data-image-id="5" isvr-photosphere-menu-thumb class="img-photosphere-thumb" src="#img-photosphere-3-thumb" width="2" height="0.4" position="0 -0.7 0">
+      <a-image data-image-id="5" isvr-photosphere-menu-thumb class="img-photosphere-thumb" src="#img-photosphere-5-thumb" width="2" height="0.4" position="0 -0.7 0">
           <a-animation attribute="position" begin="mouseenter" from="0 -0.7 0" to="0 -0.7 0.5" dur="400"></a-animation>
           <a-animation attribute="position" begin="mouseleave" from="0 -0.7 0.5" to="0 -0.7 0" dur="400"></a-animation>
           <a-animation attribute="material.opacity" begin="fade" to="1"></a-animation>
       </a-image>
 
-      <a-image data-image-id="6" isvr-photosphere-menu-thumb class="img-photosphere-thumb" onclick="nextScene()" src="#img-photosphere-3-thumb" width="2" height="0.4" position="0 -1.3 0">
+      <a-image data-image-id="6" isvr-photosphere-menu-thumb class="img-photosphere-thumb" onclick="nextScene()" src="#img-photosphere-6-thumb" width="2" height="0.4" position="0 -1.3 0">
           <a-animation attribute="position" begin="mouseenter" from="0 -1.3 0" to="0 -1.3 0.5" dur="400"></a-animation>
           <a-animation attribute="position" begin="mouseleave" from="0 -1.3 0.5" to="0 -1.3 0" dur="400"></a-animation>
           <a-animation attribute="rotation" begin="mouseenter" from="0 0 0" to="-30 0 0" dur="400"></a-animation>
@@ -156,8 +159,8 @@
     </a-entity>
 
     <a-entity id="scene2" visible="false">
-      <a-entity position="0 2.25 -15" particle-system="preset: dust"></a-entity>
-      <a-entity position="0 0 0" geometry="primitive: box; width: .8; height: .8; depth: .1" material="color: red" sound="src: ../aamaze-sound/Aztek-FromYou.mp3; autoplay: true"></a-entity>
+      <!-- <a-entity position="0 2.25 -15" particle-system="preset: dust"></a-entity> -->
+      <!-- <a-entity position="0 0 0" geometry="primitive: box; width: .8; height: .8; depth: .1" material="color: red" sound="src: ../aamaze-sound/Aztek-FromYou.mp3; autoplay: true"></a-entity> -->
       <a-sky color="#6EBAA7"></a-sky>
     </a-entity>
     <script>
