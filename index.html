@@ -29,15 +29,13 @@
     <script src="https://rawgit.com/ngokevin/aframe-text-component/master/dist/aframe-text-component.min.js"></script>
     <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
 
-    <script src="js/aframe-fit-texture-component.min.js"></script>
-    <script src="js/aframe-htmltexture-component.min.js"></script>
-    <script src="js/aframe-particle-system-component.js"></script>
+    <script src="js/aframe-no-click-look-controls.min.js"></script>
 
     <script src="js/components/isvr_photosphere_menu.js"></script>
     <script src="js/components/isvr_photosphere_menu_thumb.js"></script>
     <script src="js/components/isvr_photosphere_menu_navigation.js"></script>
 
-    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v2.2.0/dist/aframe-extras.min.js"></script>
+    <!-- <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v2.2.0/dist/aframe-extras.min.js"></script> -->
   </head>
 
   <body>
@@ -46,8 +44,8 @@
       <img id="floor" src="./img/noisy-texture.png">
       <img id="logo" src="./img/logo.jpg">
       <img id="redirect" src="./img/redirect.png">
-      <img id="sky" src="./img/sky.jpg">
-      <img src="./img/AM polygon.png" id="polygon">
+      <!-- <img id="sky" src="./img/sky.jpg"> -->
+      <!-- <img src="./img/AM polygon.png" id="polygon"> -->
 
       <img id="pano1" src="./img/pano/PANO_20160726_162209.jpg">
       <img id="pano2" src="./img/pano/PANO_20160726_161315.jpg">
@@ -142,9 +140,9 @@
 
       <a-image src="#logo" fit-texure scale="1.0" position="0 0 5.4" rotation="0 180 0">
       </a-image>
-      <a-entity  position="0 -0.5 5.0" rotation="0 180 0" geometry="primitive: plane; height:0.2" material="src: #polygon" fit-texture">
+      <!-- <a-entity  position="0 -0.5 5.0" rotation="0 180 0" geometry="primitive: plane; height:0.2" material="src: #polygon" fit-texture">
 
-      </a-entity>
+      </a-entity> -->
       <!-- <a-entity isvr-photosphere-menu-navigation="url:https://www.ideaspacevr.org/webvr-photosphere-viewer-equirectangular-images/field-data?key=images_upload&chunk-size=3&page=2" id="menu-arrow-down" position="0 -1.5 0" visible=" true ">
           <a-plane position="-0.07 0 0" rotation="0 0 45" width="0.10" height="0.3" color="#5b00f4"></a-plane>
           <a-plane position="0.07 0 0" rotation="0 0 -45" width="0.10" height="0.3" color="#5b00f4"></a-plane>
@@ -163,64 +161,66 @@
       <!-- <a-entity position="0 0 0" geometry="primitive: box; width: .8; height: .8; depth: .1" material="color: red" sound="src: ../aamaze-sound/Aztek-FromYou.mp3; autoplay: true"></a-entity> -->
       <a-sky color="#6EBAA7"></a-sky>
     </a-entity>
-    <script>
-      // document.querySelector('#id').addEventListener('click', function () {
-      //   window.location = "#location1";
-      // });
-      //
+  </a-scene>
+  <script>
+    // document.querySelector('#id').addEventListener('click', function () {
+    //   window.location = "#location1";
+    // });
+    //
 
-      // Change scene
-      function nextScene() {
-          document.getElementById('photosphere').setAttribute('visible', 'false')
-          document.getElementById('scene2').setAttribute('visible', 'true')
+    // Change scene
+    function nextScene() {
+        document.getElementById('photosphere').setAttribute('visible', 'false')
+        document.getElementById('scene2').setAttribute('visible', 'true')
+      }
+
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-xxxxxxx-x', 'auto');
+    ga('send', 'pageview');
+
+
+  </script>
+  <script>
+    var deadline = '2016-8-10';
+
+    function getTimeRemaining(endtime){
+      var t = Date.parse(endtime) - Date.parse(new Date());
+      var seconds = Math.floor( (t/1000) % 60 );
+      var minutes = Math.floor( (t/1000/60) % 60 );
+      var hours = Math.floor( (t/(1000*60*60)) % 24 );
+      var days = Math.floor( t/(1000*60*60*24) );
+      return {
+        'total': t,
+        'days': days,
+        'hours': hours,
+        'minutes': minutes,
+        'seconds': seconds
+      };
+    }
+
+    function initializeClock(id, endtime){
+      var clock = document.getElementById(id);
+      var timeinterval = setInterval(function(){
+        var t = getTimeRemaining(endtime);
+        clock.innerHTML = 'days: ' + t.days + '<br>' +
+                          'hours: '+ t.hours + '<br>' +
+                          'minutes: ' + t.minutes + '<br>' +
+                          'seconds: ' + t.seconds;
+        if(t.total<=0){
+          clearInterval(timeinterval);
         }
+      },1000);
+    }
+    window.onload = function()
+    {
+        initializeClock('clockentity', deadline);
+    }
 
 
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-      ga('create', 'UA-xxxxxxx-x', 'auto');
-      ga('send', 'pageview');
-
-
-    </script>
-    <script>
-      var deadline = '2016-8-10';
-
-      function getTimeRemaining(endtime){
-        var t = Date.parse(endtime) - Date.parse(new Date());
-        var seconds = Math.floor( (t/1000) % 60 );
-        var minutes = Math.floor( (t/1000/60) % 60 );
-        var hours = Math.floor( (t/(1000*60*60)) % 24 );
-        var days = Math.floor( t/(1000*60*60*24) );
-        return {
-          'total': t,
-          'days': days,
-          'hours': hours,
-          'minutes': minutes,
-          'seconds': seconds
-        };
-      }
-
-      function initializeClock(id, endtime){
-        var clock = document.getElementById(id);
-        var timeinterval = setInterval(function(){
-          var t = getTimeRemaining(endtime);
-          clock.innerHTML = 'days: ' + t.days + '<br>' +
-                            'hours: '+ t.hours + '<br>' +
-                            'minutes: ' + t.minutes + '<br>' +
-                            'seconds: ' + t.seconds;
-          if(t.total<=0){
-            clearInterval(timeinterval);
-          }
-        },1000);
-      }
-      window.onload = function()
-      {
-          initializeClock('clockentity', deadline);
-      }
-
-    </script>
+  </script>
   </body>
 </html>
