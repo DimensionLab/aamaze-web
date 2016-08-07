@@ -2,26 +2,12 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>DimensionLab</title>
+    <title>Aamaze 2016</title>
     <meta name="description" content="DimensionLab">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes"> <!-- Fullscreen Landscape on iOS -->
 
-    <meta name="abstract" content="" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta name="copyright" content="" />
-    <meta name="robots" content="follow, index" />
-
-    <meta property="og:site_name" content="" />
-    <meta property="og:image:secure_url" content="" />
-    <meta property="og:image" content="" />
-    <meta property="og:description" content="" />
-    <meta property="og:title" content="WebVR Photosphere Viewer" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="" />
-
-    <script src="aframe.js"></script>
+    <script src="aframe.min.js"></script>
     <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
 
     <script src="https://rawgit.com/ngokevin/aframe-look-at-component/master/dist/aframe-look-at-component.min.js"></script>
@@ -29,40 +15,48 @@
     <script src="https://rawgit.com/ngokevin/aframe-text-component/master/dist/aframe-text-component.min.js"></script>
     <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
 
-    <script src="js/aframe-fit-texture-component.min.js"></script>
-    <script src="js/aframe-htmltexture-component.min.js"></script>
-    <script src="js/aframe-particle-system-component.js"></script>
+    <script src="js/aframe-no-click-look-controls.min.js"></script>
 
     <script src="js/components/isvr_photosphere_menu.js"></script>
     <script src="js/components/isvr_photosphere_menu_thumb.js"></script>
     <script src="js/components/isvr_photosphere_menu_navigation.js"></script>
 
-    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v2.2.0/dist/aframe-extras.min.js"></script>
+    <script src="https://rawgit.com/ngokevin/aframe-audio-visualizer-components/master/dist/aframe-audio-visualizer-components.min.js"></script>
+
+    <!-- <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v2.2.0/dist/aframe-extras.min.js"></script> -->
   </head>
 
   <body>
   <a-scene>
     <a-assets>
+      <audio id="background_audio" src="aamaze-sound/Facaden - Spytter Som En Gal Feat. Lil-D (Officiel Musikvideo).mp3"></audio>
+
       <img id="floor" src="./img/noisy-texture.png">
       <img id="logo" src="./img/logo.jpg">
       <img id="redirect" src="./img/redirect.png">
-      <img id="sky" src="./img/sky.jpg">
-      <img src="./img/AM polygon.png" id="polygon">
 
-      <img id="pano1" src="./img/pano/PANO_20160726_162209.jpg">
-      <img id="pano2" src="./img/pano/PANO_20160726_161315.jpg">
 
-      <img src="./img/pano/PANO_20160726_162209.jpg" id="img-photosphere-1">
+      <!-- Icons -->
+      <img id="space-ico" src="img/space.png" alt="">
+      <img id="tap-ico" src="img/tap.png" alt="">
+      <img id="vr-ico" src="img/vr.png" alt="">
+      <img id="close-x" src="img/x.png" alt="">
+
+      <!-- Photo spheres -->
+      <img src=".//img" id="img-photosphere-1">
+      <img src="./img/pano/PANO_20160726_162209.jpg" id="img-photosphere-2">
+      <img src="./img/pano/PANO_20160726_161315.jpg" id="img-photosphere-3">
+
+      <!-- Menu thumbnails -->
       <img src="./img/AM logo.png" id="img-photosphere-1-thumb">
-      <img src="images/tXP1XaC9ShZL5s8bIY001NygnKSJrUofLCkJUlurOzB8El5YDEi7p34cFlxz.jpg" id="img-photosphere-2">
       <img src="./img/location1.jpg" id="img-photosphere-2-thumb">
-      <img src="images/HlwFJ3VKh2Vt7aA5rLWyxrjFQuOzYOMHcC8vOWef36C8M81RM06EBPMelHh0.jpg" id="img-photosphere-3">
       <img src="./img/locaton2.jpg" id="img-photosphere-3-thumb">
       <img src="./img/locaton2.jpg" id="img-photosphere-4-thumb">
       <img src="./img/program.jpg" id="img-photosphere-5-thumb">
       <img src="./img/artists.jpg" id="img-photosphere-6-thumb">
 
-      <!-- <audio id="aztek" src="./aamaze-sound/Aztek-FromYou.mp3"> -->
+      <!-- Textures -->
+      <img id="my-texture" src="resources/musicians/BETWEENbetween.jpg">
     </a-assets>
 
     <a-entity position="0 1.8 5">
@@ -73,19 +67,23 @@
                 <a-entity
                     cursor="fuse: false; maxDistance: 500; timeout: 3000;"
                     id="cursor"
-                    position="0 0 -3.4"
-                    geometry="primitive: ring; radiusOuter: 0.10; radiusInner: 0.05;"
+                    position="0 0 -2"
+                    geometry="primitive: ring; radiusOuter: 0.07; radiusInner: 0.035;"
                     material="color: red; shader: flat;"
                     visible="false">
                 </a-entity>
                 <a-entity
                     cursor="fuse: false; maxDistance: 500; timeout: 3000;"
                     id="cursor-main"
-                    position="0 0 -3.4"
-                    geometry="primitive: ring; radiusOuter: 0.10; radiusInner: 0.05;"
+                    position="0 0 -2"
+                    geometry="primitive: ring; radiusOuter: 0.07; radiusInner: 0.03;"
                     material="color: green; shader: flat;"
                     >
-                    <a-entity scale="0.9 0.9 0.9" bmfont-text="text: Hit SPACE(icon) or tap(icon) to show menu;" position="-1.6 -0.5 0"></a-entity>
+                    <a-entity scale="0.9 0.9 0.9" bmfont-text="text:" position="-1.6 -0.5 0">
+                      <a-image src="#space-ico" width="0.4" height="0.4" position="0 0 0"></a-image>
+                      <a-image src="#tap-ico" width="0.4" height="0.4" position="1 0 0"></a-image>
+                      <a-image src="#vr-ico" width="0.4" height="0.4" position="2 0 0"></a-image>
+                    </a-entity>
                 </a-entity>
             </a-entity>
         </a-entity>
@@ -93,12 +91,8 @@
 
     </a-entity>
 
-    <a-entity data-current-page="1" isvr-photosphere-menu id="photosphere-menu" visible="false">
-      <a-entity bmfont-text="text: Hello world; width: 1000" position="-0.5 2 1"></a-entity>
-      <a-entity isvr-photosphere-menu-navigation id="menu-arrow-up" position="0 1.5 0" visible="false">
-          <a-plane position="-0.07 0 0" rotation="0 0 -45" width="0.10" height="0.3" color="#5b00f4"></a-plane>
-          <a-plane position="0.07 0 0" rotation="0 0 45" width="0.10" height="0.3" color="#5b00f4"></a-plane>
-      </a-entity>
+    <a-entity data-current-page="1" isvr-photosphere-menu id="photosphere-menu" visible="false" >
+      <a-entity cursor position="0 0 -5"></a-entity>
 
       <a-image data-image-id="1" isvr-photosphere-menu-thumb class="img-photosphere-thumb" src="#img-photosphere-1-thumb" width="2" height="0.7" position="-0.5 0.8 0" fit-texure scale="0.5">
           <a-animation attribute="position" begin="mouseenter" from="-0.5 0.8 0" to="-0.5 0.8 0.5" dur="400"></a-animation>
@@ -132,7 +126,7 @@
           <a-animation attribute="material.opacity" begin="fade" to="1"></a-animation>
       </a-image>
 
-      <a-image data-image-id="6" isvr-photosphere-menu-thumb class="img-photosphere-thumb" onclick="nextScene()" src="#img-photosphere-6-thumb" width="2" height="0.4" position="0 -1.3 0">
+      <a-image data-image-id="6" isvr-photosphere-menu-thumb class="img-photosphere-thumb" onclick="newScene()" src="#img-photosphere-6-thumb" width="2" height="0.4" position="0 -1.3 0">
           <a-animation attribute="position" begin="mouseenter" from="0 -1.3 0" to="0 -1.3 0.5" dur="400"></a-animation>
           <a-animation attribute="position" begin="mouseleave" from="0 -1.3 0.5" to="0 -1.3 0" dur="400"></a-animation>
           <a-animation attribute="rotation" begin="mouseenter" from="0 0 0" to="-30 0 0" dur="400"></a-animation>
@@ -140,17 +134,14 @@
           <a-animation attribute="material.opacity" begin="fade" to="1"></a-animation>
       </a-image>
 
+      <a-image onclick="closeMenu()"" src="#close-x" position="0 -1.9 0" width="0.4" height="0.4" rotation="-30 0 0">
+          <a-animation attribute="rotation" begin="mouseenter" from="-30 0 0" to="-30 360 0" dur="500"></a-animation>
+          <a-animation attribute="material.opacity" begin="fade" to="0.3"></a-animation>
+      </a-image>
+
       <a-image src="#logo" fit-texure scale="1.0" position="0 0 5.4" rotation="0 180 0">
       </a-image>
-      <a-entity  position="0 -0.5 5.0" rotation="0 180 0" geometry="primitive: plane; height:0.2" material="src: #polygon" fit-texture">
-
-      </a-entity>
-      <!-- <a-entity isvr-photosphere-menu-navigation="url:https://www.ideaspacevr.org/webvr-photosphere-viewer-equirectangular-images/field-data?key=images_upload&chunk-size=3&page=2" id="menu-arrow-down" position="0 -1.5 0" visible=" true ">
-          <a-plane position="-0.07 0 0" rotation="0 0 45" width="0.10" height="0.3" color="#5b00f4"></a-plane>
-          <a-plane position="0.07 0 0" rotation="0 0 -45" width="0.10" height="0.3" color="#5b00f4"></a-plane>
-      </a-entity> -->
     </a-entity>
-
     <a-entity
         geometry="primitive:sphere;radius:5000;segmentsWidth:64;segmentsHeight:64"
         material="shader:flat;color:#ffffff;fog:false; src:#img-photosphere-1 "
@@ -159,86 +150,57 @@
     </a-entity>
 
     <a-entity id="scene2" visible="false">
-      <!-- <a-entity position="0 2.25 -15" particle-system="preset: dust"></a-entity> -->
       <!-- <a-entity position="0 0 0" geometry="primitive: box; width: .8; height: .8; depth: .1" material="color: red" sound="src: ../aamaze-sound/Aztek-FromYou.mp3; autoplay: true"></a-entity> -->
+
+      <a-entity layout="type: circle; radius: 6;" position="0 0 2.7" >
+        <a-box geometry="primitive: box" material="src: #my-texture" width="2" height="2" depth="2" sound="src: aamaze-sound/Facaden - Spytter Som En Gal Feat. Lil-D (Officiel Musikvideo).mp3; on: click">
+          <a-animation attribute="velocity" begin="click" from="0 0 0" to="0 1 0" dur="5000" easing="ease-in-out-cubic"></a-animation>
+        </a-box>
+        <a-box geometry="primitive: box" material="src: " width="2" height="2" depth="2"></a-box>
+        <a-box geometry="primitive: box" material="src: " width="2" height="2" depth="2"></a-box>
+        <a-box geometry="primitive: box" material="src: " width="2" height="2" depth="2"></a-box>
+        <a-box geometry="primitive: box" material="src: " width="2" height="2" depth="2"></a-box>
+        <a-box geometry="primitive: box" material="src: " width="2" height="2" depth="2"></a-box>
+        <a-box geometry="primitive: box" material="src: " width="2" height="2" depth="2"></a-box>
+      </a-entity>
       <a-sky color="#6EBAA7"></a-sky>
     </a-entity>
-    <script>
-      // document.querySelector('#id').addEventListener('click', function () {
-      //   window.location = "#location1";
-      // });
-      //
-
-      // Change scene
-      function nextScene() {
-          document.getElementById('photosphere').setAttribute('visible', 'false')
-          document.getElementById('scene2').setAttribute('visible', 'true')
-        }
-
-      // Sound Control
-      var entity = document.querySelector('[sound]');
-      entity.pause();
-
-      function playSong() {
-        var self = event.target
-        self.components.sound.play();
-        self.setAttribute('geometry', 'width', '1');
-        self.setAttribute('geometry', 'height', '1');
+    <a-entity id="scene3" visible="false">
+    </a-entity>
+  </a-scene>
+  <script>
+    // document.querySelector('#id').addEventListener('click', function () {
+    //   window.location = "#location1";
+    // });
+    //
+    function newScene() {
+        document.querySelector('#photosphere-menu').setAttribute('visible', false);
+        document.querySelector('#cursor-main').setAttribute('visible', true);
+        document.querySelector('#photosphere').setAttribute('visible', false);
+        document.querySelector('#scene2').setAttribute('visible', true);
       };
+    function newScene2() {
 
-      function pauseSong() {
-          var self = event.target
-          self.components.sound.pause();
-          self.setAttribute('geometry', 'width', '.8');
-          self.setAttribute('geometry', 'height', '.8');
+    };
+
+    // Close menu event
+    function closeMenu() {
+        document.querySelector('#photosphere-menu').setAttribute('visible', false);
+        document.querySelector('#cursor-main').setAttribute('visible', true);
       };
 
 
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-      ga('create', 'UA-xxxxxxx-x', 'auto');
-      ga('send', 'pageview');
 
 
-    </script>
-    <script>
-      var deadline = '2016-8-10';
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-xxxxxxx-x', 'auto');
+    ga('send', 'pageview');
 
-      function getTimeRemaining(endtime){
-        var t = Date.parse(endtime) - Date.parse(new Date());
-        var seconds = Math.floor( (t/1000) % 60 );
-        var minutes = Math.floor( (t/1000/60) % 60 );
-        var hours = Math.floor( (t/(1000*60*60)) % 24 );
-        var days = Math.floor( t/(1000*60*60*24) );
-        return {
-          'total': t,
-          'days': days,
-          'hours': hours,
-          'minutes': minutes,
-          'seconds': seconds
-        };
-      }
 
-      // function initializeClock(id, endtime){
-      //   var clock = document.getElementById(id);
-      //   var timeinterval = setInterval(function(){
-      //     var t = getTimeRemaining(endtime);
-      //     clock.innerHTML = 'days: ' + t.days + '<br>' +
-      //                       'hours: '+ t.hours + '<br>' +
-      //                       'minutes: ' + t.minutes + '<br>' +
-      //                       'seconds: ' + t.seconds;
-      //     if(t.total<=0){
-      //       clearInterval(timeinterval);
-      //     }
-      //   },1000);
-      // }
-      // window.onload = function()
-      // {
-      //     initializeClock('clockentity', deadline);
-      // }
+  </script>
 
-    </script>
   </body>
 </html>

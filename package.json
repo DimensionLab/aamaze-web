@@ -19,5 +19,8 @@
     "aframe-example",
     "aframe-scene",
     "aframe-boilerplate"
-  ]
+  ],
+  "dependencies": {
+    "aframe-particle-system-component": "^1.0.1"
+  }
 }
