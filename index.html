@@ -29,7 +29,7 @@
     <a-assets>
       <!-- AUDIO ASSETS -->
       <audio id="sound1-facaden" src="aamaze-sound/Facaden - Spytter Som En Gal Feat. Lil-D (Officiel Musikvideo).mp3"></audio>
-      <audio id="sound2" src="aamaze-sound/Aztek-FromYou.mp3"></audio>
+      <audio id="sound2-aztek" src="aamaze-sound/Aztek-FromYou.mp3"></audio>
       <audio id="sound3-between" src="aamaze-sound/Between Between - more of you.mp3"></audio>
       <audio id="sound4-bluecells" src="aamaze-sound/Blue Cells - Bordeaux.mp3"></audio>
       <audio id="sound5-danskespor" src="aamaze-sound/Danske Spor - Alle Disse Hoveder.mp3"></audio>
@@ -63,8 +63,9 @@
       <!-- Icons -->
       <img id="space-ico" src="img/space.png" alt="">
       <img id="tap-ico" src="img/tap.png" alt="">
-      <img id="vr-ico" src="img/vr.png" alt="">
+      <img id="vr-ico" src="img/carboard.png" alt="">
       <img id="close-x" src="img/x.png" alt="">
+      <img id="line" src="img/line.png" alt="">
 
       <!-- Photo spheres -->
       <img src=".//img" id="img-photosphere-1">
@@ -128,10 +129,12 @@
                     geometry="primitive: ring; radiusOuter: 0.07; radiusInner: 0.03;"
                     material="color: green; shader: flat;"
                     >
-                    <a-entity scale="0.9 0.9 0.9" bmfont-text="text:" position="-1.6 -0.5 0">
-                      <a-image src="#space-ico" width="0.4" height="0.4" position="0 0 0"></a-image>
-                      <a-image src="#tap-ico" width="0.4" height="0.4" position="1 0 0"></a-image>
-                      <a-image src="#vr-ico" width="0.4" height="0.4" position="2 0 0"></a-image>
+                    <a-entity scale="0.4 0.4 0.4" bmfont-text="text:" position="0 -0.5 0">
+                      <a-image src="#space-ico" width="0.5" height="0.5" position="-0.8 0 0"></a-image>
+                      <a-image src="#line" width="0.3" height="0.3" position="-0.35 0 0" rotation="0 0 65"></a-image>
+                      <a-image src="#tap-ico" width="0.5" height="0.5" position="0 0 0"></a-image>
+                      <a-image src="#line" width="0.3" height="0.3" position="0.35 0 0" rotation="0 0 65"></a-image>
+                      <a-image src="#vr-ico" width="0.5" height="0.5" position="0.8 0 0"></a-image>
                     </a-entity>
                 </a-entity>
             </a-entity>
@@ -169,7 +172,7 @@
       </a-image>
 
 
-      <a-image data-image-id="5" isvr-photosphere-menu-thumb class="img-photosphere-thumb" src="#img-photosphere-5-thumb" width="2" height="0.4" position="0 -0.7 0">
+      <a-image data-image-id="5" isvr-photosphere-menu-thumb class="img-photosphere-thumb" onclick="newSceneProgram()"" src="#img-photosphere-5-thumb" width="2" height="0.4" position="0 -0.7 0">
           <a-animation attribute="position" begin="mouseenter" from="0 -0.7 0" to="0 -0.7 0.5" dur="400"></a-animation>
           <a-animation attribute="position" begin="mouseleave" from="0 -0.7 0.5" to="0 -0.7 0" dur="400"></a-animation>
           <a-animation attribute="material.opacity" begin="fade" to="1"></a-animation>
@@ -197,30 +200,6 @@
         scale="-1 1 1"
         rotation="0 -60 0" id="photosphere">
     </a-entity>
-      <audio id="sound1-facaden" src="aamaze-sound/Facaden - Spytter Som En Gal Feat. Lil-D (Officiel Musikvideo).mp3"></audio>
-      <audio id="sound2-aztek" src="aamaze-sound/Aztek-FromYou.mp3"></audio>
-      <audio id="sound3-between" src="aamaze-sound/Between Between - more of you.mp3"></audio>
-      <audio id="sound4-bluecells" src="aamaze-sound/Blue Cells - Bordeaux.mp3"></audio>
-      <audio id="sound5-danskespor" src="aamaze-sound/Danske Spor - Alle Disse Hoveder.mp3"></audio>
-      <audio id="sound6-drowned" src="aamaze-sound/Drowned Session - The Winter Way.mp3"></audio>
-      <audio id="sound7-dustyawe" src="aamaze-sound/Dusty Awe - Angst (feat. Memory Boys).mp3"></audio>
-      <audio id="sound8-enmand" src="aamaze-sound/En Mand Stærk - Bænken.mp3"></audio>
-      <audio id="sound9-franciska" src="aamaze-sound/Franciska - Another Life (Teaser).mp3"></audio>
-      <audio id="sound10-kazpa" src="aamaze-sound/Kazpa G - Gadetalent.mp3"></audio>
-      <audio id="sound11-kernefamilien" src="aamaze-sound/Kernefamilien - Psykopat.mp3"></audio>
-      <audio id="sound12-markking" src="aamaze-sound/Mark King - Alene Nu.mp3"></audio>
-      <audio id="sound13-momcalls" src="aamaze-sound/Mom Calls Me Thunder - Cannon Baby (Official Music Video).mp3"></audio>
-      <audio id="sound14-nicotine" src="aamaze-sound/Nicotine Nerves - SKin Tight Shoes.mp3"></audio>
-      <audio id="sound15-pepenero" src="aamaze-sound/PepeNero - Let Time Do Its Thing.mp3"></audio>
-      <audio id="sound16-perlefar" src="aamaze-sound/PerleFar - Pigen Med Det Røde Hår.mp3"></audio>
-      <audio id="sound17-phaun" src="aamaze-sound/Phaun - En Af De Andre.mp3"></audio>
-      <audio id="sound18-royal" src="aamaze-sound/Royal Feet Factory - Closer To My Body (Official Music Video).mp3"></audio>
-      <audio id="sound19-smoking" src="aamaze-sound/Smoking Voices - Vildspor.mp3"></audio>
-      <audio id="sound20-sortefugle" src="aamaze-sound/SORTE FUGLE - NYT LIV.mp3"></audio>
-      <audio id="sound21-suits" src="aamaze-sound/Suits Boulevard - Ocean of Lights.mp3"></audio>
-      <audio id="sound22-tinevingaard" src="aamaze-sound/Tine Vingaard - Lover (2013).mp3"></audio>
-      <audio id="sound23-virtus" src="aamaze-sound/Virtus - Angel In Disguise [TV Bingo].mp3"></audio>
-      <audio id="sound24-wolff" src="aamaze-sound/WOLFF x El Peligro - For mig Selv.mp3"></audio>
     <a-entity id="scene2" visible="false">
       <a-entity layout="type: circle; radius: 5;" position="0 -1 2.7" >
         <a-box geometry="primitive: box" material="src: #texture-22-facaden" width="2" height="2" depth="2" sound="src: aamaze-sound/Facaden - Spytter Som En Gal Feat. Lil-D (Officiel Musikvideo).mp3;"
@@ -233,7 +212,7 @@
         onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
         <a-box geometry="primitive: box" material="src: #texture-3-drownedsession" width="2" height="2" depth="2"  sound="src: aamaze-sound/Drowned Session - The Winter Way.mp3;"
         onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
-        <a-box geometry="primitive: box" material="src: #texture-4-dustyawe" width="2" height="2" depth="2"  sound="src: aamaze-sound/aamaze-sound/Dusty Awe - Angst (feat. Memory Boys).mp3;"
+        <a-box geometry="primitive: box" material="src: #texture-4-dustyawe" width="2" height="2" depth="2"  sound="src: aamaze-sound/Dusty Awe - Angst (feat. Memory Boys).mp3;"
         onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
         <a-box geometry="primitive: box" material="src: #texture-5-kernefamilien" width="2" height="2" depth="2"  sound="src: aamaze-sound/Kernefamilien - Psykopat.mp3;"
         onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
@@ -286,21 +265,28 @@
       <a-sky color="#6EBAA7"></a-sky>
     </a-entity>
     <a-entity id="scene3" visible="false">
+
     </a-entity>
   </a-scene>
   <script>
     // document.querySelector('#id').addEventListener('click', function () {
     //   window.location = "#location1";
     // });
-    //
+
+    // Turn on scene2-musicians cubes
     function newScene() {
         document.querySelector('#photosphere-menu').setAttribute('visible', false);
         document.querySelector('#cursor-main').setAttribute('visible', true);
         document.querySelector('#photosphere').setAttribute('visible', false);
         document.querySelector('#scene2').setAttribute('visible', true);
       };
-    function newScene2() {
-
+    // Turn on scene3-program
+    function newSceneProgram() {
+        document.querySelector('#photosphere-menu').setAttribute('visible', false);
+        document.querySelector('#cursor-main').setAttribute('visible', true);
+        document.querySelector('#photosphere').setAttribute('visible', false);
+        document.querySelector('#scene2').setAttribute('visible', false);
+        document.querySelector('#scene3').setAttribute('visible', true);
     };
 
     // Close menu event
