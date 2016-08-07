@@ -21,15 +21,39 @@
     <script src="js/components/isvr_photosphere_menu_thumb.js"></script>
     <script src="js/components/isvr_photosphere_menu_navigation.js"></script>
 
-    <script src="https://rawgit.com/ngokevin/aframe-audio-visualizer-components/master/dist/aframe-audio-visualizer-components.min.js"></script>
-
     <!-- <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v2.2.0/dist/aframe-extras.min.js"></script> -->
   </head>
 
   <body>
   <a-scene>
     <a-assets>
-      <audio id="background_audio" src="aamaze-sound/Facaden - Spytter Som En Gal Feat. Lil-D (Officiel Musikvideo).mp3"></audio>
+      <!-- AUDIO ASSETS -->
+      <audio id="sound1-facaden" src="aamaze-sound/Facaden - Spytter Som En Gal Feat. Lil-D (Officiel Musikvideo).mp3"></audio>
+      <audio id="sound2" src="aamaze-sound/Aztek-FromYou.mp3"></audio>
+      <audio id="sound3-between" src="aamaze-sound/Between Between - more of you.mp3"></audio>
+      <audio id="sound4-bluecells" src="aamaze-sound/Blue Cells - Bordeaux.mp3"></audio>
+      <audio id="sound5-danskespor" src="aamaze-sound/Danske Spor - Alle Disse Hoveder.mp3"></audio>
+      <audio id="sound6-drowned" src="aamaze-sound/Drowned Session - The Winter Way.mp3"></audio>
+      <audio id="sound7-dustyawe" src="aamaze-sound/Dusty Awe - Angst (feat. Memory Boys).mp3"></audio>
+      <audio id="sound8-enmand" src="aamaze-sound/En Mand Stærk - Bænken.mp3"></audio>
+      <audio id="sound9-franciska" src="aamaze-sound/Franciska - Another Life (Teaser).mp3"></audio>
+      <audio id="sound10-kazpa" src="aamaze-sound/Kazpa G - Gadetalent.mp3"></audio>
+      <audio id="sound11-kernefamilien" src="aamaze-sound/Kernefamilien - Psykopat.mp3"></audio>
+      <audio id="sound12-markking" src="aamaze-sound/Mark King - Alene Nu.mp3"></audio>
+      <audio id="sound13-momcalls" src="aamaze-sound/Mom Calls Me Thunder - Cannon Baby (Official Music Video).mp3"></audio>
+      <audio id="sound14-nicotine" src="aamaze-sound/Nicotine Nerves - SKin Tight Shoes.mp3"></audio>
+      <audio id="sound15-pepenero" src="aamaze-sound/PepeNero - Let Time Do Its Thing.mp3"></audio>
+      <audio id="sound16-perlefar" src="aamaze-sound/PerleFar - Pigen Med Det Røde Hår.mp3"></audio>
+      <audio id="sound17-phaun" src="aamaze-sound/Phaun - En Af De Andre.mp3"></audio>
+      <audio id="sound18-royal" src="aamaze-sound/Royal Feet Factory - Closer To My Body (Official Music Video).mp3"></audio>
+      <audio id="sound19-smoking" src="aamaze-sound/Smoking Voices - Vildspor.mp3"></audio>
+      <audio id="sound20-sortefugle" src="aamaze-sound/SORTE FUGLE - NYT LIV.mp3"></audio>
+      <audio id="sound21-suits" src="aamaze-sound/Suits Boulevard - Ocean of Lights.mp3"></audio>
+      <audio id="sound22-tinevingaard" src="aamaze-sound/Tine Vingaard - Lover (2013).mp3"></audio>
+      <audio id="sound23-virtus" src="aamaze-sound/Virtus - Angel In Disguise [TV Bingo].mp3"></audio>
+      <audio id="sound24-wolff" src="aamaze-sound/WOLFF x El Peligro - For mig Selv.mp3"></audio>
+
+
 
       <img id="floor" src="./img/noisy-texture.png">
       <img id="logo" src="./img/logo.jpg">
@@ -56,7 +80,32 @@
       <img src="./img/artists.jpg" id="img-photosphere-6-thumb">
 
       <!-- Textures -->
-      <img id="my-texture" src="resources/musicians/BETWEENbetween.jpg">
+      <img id="texture-1-between" src="resources/musicians/BETWEENbetween.jpg">
+      <img id="texture-2-danskespor" src="resources/musicians/danske spor.jpg">
+      <img id="texture-3-drownedsession" src="resources/musicians/Drowned Session.jpg">
+      <img id="texture-4-dustyawe" src="resources/musicians/Dusty Awe.jpg">
+      <img id="texture-5-kernefamilien" src="resources/musicians/Kernefamilien.jpg">
+      <img id="texture-6-markking" src="resources/musicians/Mark King.png">
+      <img id="texture-7-momcalsmethunder" src="resources/musicians/Mom Calls Me Thunder.png">
+      <img id="texture-8-nicotinenerves" src="resources/musicians/Nicotine Nerves.jpg">
+      <img id="texture-9-pepenero" src="resources/musicians/pepenero.jpg">
+      <img id="texture-10-phaun" src="resources/musicians/phaun.jpg">
+      <img id="texture-11-royalfeetfactory" src="resources/musicians/Royal Feet Factory.jpg">
+      <img id="texture-12-smokingvoices" src="resources/musicians/Smoking Voices.jpg">
+      <img id="texture-13-sortefugle" src="resources/musicians/Sorte Fugle.jpg">
+      <img id="texture-14-suitsboulevard" src="resources/musicians/Suits Boulevard.png">
+      <img id="texture-15-tinevingaard" src="resources/musicians/Tine Vingaard.jpg">
+      <img id="texture-16-kazpa" src="resources/musicians/Kazpa G.jpg">
+      <img id="texture-17-anders" src="resources/musicians/Anders and Den Tonedøve.jpg">
+      <img id="texture-18-wolff" src="resources/musicians/WOLFF.jpg">
+      <img id="texture-19-aztek" src="resources/musicians/Aztek.jpg">
+      <img id="texture-20-bluecells" src="resources/musicians/Blue Cells.jpg">
+      <img id="texture-21-enmand" src="resources/musicians/Én Mand Stærk.jpg">
+      <img id="texture-22-facaden" src="resources/musicians/Facaden.jpg">
+      <img id="texture-23-franciska" src="resources/musicians/Franciska.jpg">
+      <img id="texture-24-linesolskov" src="resources/musicians/Line Solskov Mouritsen.jpg">
+      <img id="texture-25-perlefar" src="resources/musicians/PerleFar.jpg">
+      <img id="texture-26-umami" src="resources/musicians/Umami Riddim Band.png">
     </a-assets>
 
     <a-entity position="0 1.8 5">
@@ -148,21 +197,92 @@
         scale="-1 1 1"
         rotation="0 -60 0" id="photosphere">
     </a-entity>
-
+      <audio id="sound1-facaden" src="aamaze-sound/Facaden - Spytter Som En Gal Feat. Lil-D (Officiel Musikvideo).mp3"></audio>
+      <audio id="sound2-aztek" src="aamaze-sound/Aztek-FromYou.mp3"></audio>
+      <audio id="sound3-between" src="aamaze-sound/Between Between - more of you.mp3"></audio>
+      <audio id="sound4-bluecells" src="aamaze-sound/Blue Cells - Bordeaux.mp3"></audio>
+      <audio id="sound5-danskespor" src="aamaze-sound/Danske Spor - Alle Disse Hoveder.mp3"></audio>
+      <audio id="sound6-drowned" src="aamaze-sound/Drowned Session - The Winter Way.mp3"></audio>
+      <audio id="sound7-dustyawe" src="aamaze-sound/Dusty Awe - Angst (feat. Memory Boys).mp3"></audio>
+      <audio id="sound8-enmand" src="aamaze-sound/En Mand Stærk - Bænken.mp3"></audio>
+      <audio id="sound9-franciska" src="aamaze-sound/Franciska - Another Life (Teaser).mp3"></audio>
+      <audio id="sound10-kazpa" src="aamaze-sound/Kazpa G - Gadetalent.mp3"></audio>
+      <audio id="sound11-kernefamilien" src="aamaze-sound/Kernefamilien - Psykopat.mp3"></audio>
+      <audio id="sound12-markking" src="aamaze-sound/Mark King - Alene Nu.mp3"></audio>
+      <audio id="sound13-momcalls" src="aamaze-sound/Mom Calls Me Thunder - Cannon Baby (Official Music Video).mp3"></audio>
+      <audio id="sound14-nicotine" src="aamaze-sound/Nicotine Nerves - SKin Tight Shoes.mp3"></audio>
+      <audio id="sound15-pepenero" src="aamaze-sound/PepeNero - Let Time Do Its Thing.mp3"></audio>
+      <audio id="sound16-perlefar" src="aamaze-sound/PerleFar - Pigen Med Det Røde Hår.mp3"></audio>
+      <audio id="sound17-phaun" src="aamaze-sound/Phaun - En Af De Andre.mp3"></audio>
+      <audio id="sound18-royal" src="aamaze-sound/Royal Feet Factory - Closer To My Body (Official Music Video).mp3"></audio>
+      <audio id="sound19-smoking" src="aamaze-sound/Smoking Voices - Vildspor.mp3"></audio>
+      <audio id="sound20-sortefugle" src="aamaze-sound/SORTE FUGLE - NYT LIV.mp3"></audio>
+      <audio id="sound21-suits" src="aamaze-sound/Suits Boulevard - Ocean of Lights.mp3"></audio>
+      <audio id="sound22-tinevingaard" src="aamaze-sound/Tine Vingaard - Lover (2013).mp3"></audio>
+      <audio id="sound23-virtus" src="aamaze-sound/Virtus - Angel In Disguise [TV Bingo].mp3"></audio>
+      <audio id="sound24-wolff" src="aamaze-sound/WOLFF x El Peligro - For mig Selv.mp3"></audio>
     <a-entity id="scene2" visible="false">
-      <!-- <a-entity position="0 0 0" geometry="primitive: box; width: .8; height: .8; depth: .1" material="color: red" sound="src: ../aamaze-sound/Aztek-FromYou.mp3; autoplay: true"></a-entity> -->
-
-      <a-entity layout="type: circle; radius: 6;" position="0 0 2.7" >
-        <a-box geometry="primitive: box" material="src: #my-texture" width="2" height="2" depth="2" sound="src: aamaze-sound/Facaden - Spytter Som En Gal Feat. Lil-D (Officiel Musikvideo).mp3; on: click">
+      <a-entity layout="type: circle; radius: 5;" position="0 -1 2.7" >
+        <a-box geometry="primitive: box" material="src: #texture-22-facaden" width="2" height="2" depth="2" sound="src: aamaze-sound/Facaden - Spytter Som En Gal Feat. Lil-D (Officiel Musikvideo).mp3;"
+        onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle">
           <a-animation attribute="velocity" begin="click" from="0 0 0" to="0 1 0" dur="5000" easing="ease-in-out-cubic"></a-animation>
         </a-box>
-        <a-box geometry="primitive: box" material="src: " width="2" height="2" depth="2"></a-box>
-        <a-box geometry="primitive: box" material="src: " width="2" height="2" depth="2"></a-box>
-        <a-box geometry="primitive: box" material="src: " width="2" height="2" depth="2"></a-box>
-        <a-box geometry="primitive: box" material="src: " width="2" height="2" depth="2"></a-box>
-        <a-box geometry="primitive: box" material="src: " width="2" height="2" depth="2"></a-box>
-        <a-box geometry="primitive: box" material="src: " width="2" height="2" depth="2"></a-box>
+        <a-box geometry="primitive: box" material="src: #texture-1-between" width="2" height="2" depth="2"  sound="src: aamaze-sound/Between Between - more of you.mp3;"
+        onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
+        <a-box geometry="primitive: box" material="src: #texture-2-danskespor" width="2" height="2" depth="2"  sound="src: aamaze-sound/Danske Spor - Alle Disse Hoveder.mp3;"
+        onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
+        <a-box geometry="primitive: box" material="src: #texture-3-drownedsession" width="2" height="2" depth="2"  sound="src: aamaze-sound/Drowned Session - The Winter Way.mp3;"
+        onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
+        <a-box geometry="primitive: box" material="src: #texture-4-dustyawe" width="2" height="2" depth="2"  sound="src: aamaze-sound/aamaze-sound/Dusty Awe - Angst (feat. Memory Boys).mp3;"
+        onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
+        <a-box geometry="primitive: box" material="src: #texture-5-kernefamilien" width="2" height="2" depth="2"  sound="src: aamaze-sound/Kernefamilien - Psykopat.mp3;"
+        onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
+        <a-box geometry="primitive: box" material="src: #texture-6-markking" width="2" height="2" depth="2"  sound="src: aamaze-sound/Mark King - Alene Nu.mp3;"
+        onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
       </a-entity>
+      <a-entity layout="type: circle; radius: 7;" position="0 1 2.7">
+        <a-box geometry="primitive: box" material="src: #texture-7-momcalsmethunder" width="2" height="2" depth="2" sound="src: aamaze-sound/Mom Calls Me Thunder - Cannon Baby (Official Music Video).mp3;"
+        onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
+        <a-box geometry="primitive: box" material="src: #texture-8-nicotinenerves" width="2" height="2" depth="2" sound="src: aamaze-sound/Nicotine Nerves - SKin Tight Shoes.mp3;"
+        onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
+        <a-box geometry="primitive: box" material="src: #texture-9-pepenero" width="2" height="2" depth="2" sound="src: aamaze-sound/PepeNero - Let Time Do Its Thing.mp3;"
+        onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
+        <a-box geometry="primitive: box" material="src: #texture-10-phaun" width="2" height="2" depth="2" sound="src: aamaze-sound/Phaun - En Af De Andre.mp3;"
+        onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
+        <a-box geometry="primitive: box" material="src: #texture-11-royalfeetfactory" width="2" height="2" depth="2" sound="src: aamaze-sound/Royal Feet Factory - Closer To My Body (Official Music Video).mp3;"
+        onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
+        <a-box geometry="primitive: box" material="src: #texture-12-smokingvoices" width="2" height="2" depth="2" sound="src: aamaze-sound/Smoking Voices - Vildspor.mp3;"
+        onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
+        <a-box geometry="primitive: box" material="src: #texture-13-sortefugle" width="2" height="2" depth="2" sound="src: aamaze-sound/SORTE FUGLE - NYT LIV.mp3;"
+        onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
+        <a-box geometry="primitive: box" material="src: #texture-14-suitsboulevard" width="2" height="2" depth="2" sound="src: aamaze-sound/Suits Boulevard - Ocean of Lights.mp3;"
+        onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
+      </a-entity>
+      <a-entity layout="type: circle; radius: 5;" position="0 3 2.7">
+        <a-box geometry="primitive: box" material="src: #texture-15-tinevingaard" width="2" height="2" depth="2" sound="src: aamaze-sound/Tine Vingaard - Lover (2013).mp3;"
+        onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
+        <a-box geometry="primitive: box" material="src: #texture-16-kazpa" width="2" height="2" depth="2" sound="src: aamaze-sound/Kazpa G - Gadetalent.mp3;"
+        onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
+        <a-box geometry="primitive: box" material="src: #texture-17-anders" width="2" height="2" depth="2" sound="src: aamaze-sound/--------------------------------.mp3;"
+        onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
+        <a-box geometry="primitive: box" material="src: #texture-18-wolff" width="2" height="2" depth="2" sound="src: aamaze-sound/WOLFF x El Peligro - For mig Selv.mp3;"
+        onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
+        <a-box geometry="primitive: box" material="src: #texture-19-aztek" width="2" height="2" depth="2" sound="src: aamaze-sound/Aztek-FromYou.mp3;"
+        onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
+        <a-box geometry="primitive: box" material="src: #texture-20-bluecells" width="2" height="2" depth="2" sound="src: aamaze-sound/Blue Cells - Bordeaux.mp3;"
+        onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
+        <a-box geometry="primitive: box" material="src: #texture-21-enmand" width="2" height="2" depth="2" sound="src: aamaze-sound/En Mand Stærk - Bænken.mp3;"
+        onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
+        <a-box geometry="primitive: box" material="src: #texture-23-franciska" width="2" height="2" depth="2" sound="src: aamaze-sound/Franciska - Another Life (Teaser).mp3;"
+        onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
+        <a-box geometry="primitive: box" material="src: #texture-24-linesolskov" width="2" height="2" depth="2" sound="src: aamaze-sound/---------------------------.mp3;"
+        onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
+        <a-box geometry="primitive: box" material="src: #texture-25-perlefar" width="2" height="2" depth="2" sound="src: aamaze-sound/PerleFar - Pigen Med Det Røde Hår.mp3;"
+        onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle" loop="true"></a-box>
+        <a-box geometry="primitive: box" material="src: #texture-26-umami" width="2" height="2" depth="2" sound="src: aamaze-sound/---------------------------------.mp3;"
+        onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle" ></a-box>
+      </a-entity>
+      <a-entity id="middle" position="0 0 2.7"></a-entity>
       <a-sky color="#6EBAA7"></a-sky>
     </a-entity>
     <a-entity id="scene3" visible="false">
@@ -188,6 +308,21 @@
         document.querySelector('#photosphere-menu').setAttribute('visible', false);
         document.querySelector('#cursor-main').setAttribute('visible', true);
       };
+
+
+    function playSong() {
+    var self = event.target
+    self.components.sound.play();
+    self.setAttribute('geometry', 'width', '2.5');
+    self.setAttribute('geometry', 'height', '2.5');
+};
+
+    function pauseSong() {
+        var self = event.target
+        self.components.sound.pause();
+        self.setAttribute('geometry', 'width', '2');
+        self.setAttribute('geometry', 'height', '2');
+    };
 
 
 
