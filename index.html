@@ -71,6 +71,7 @@
       <img src=".//img" id="img-photosphere-1">
       <img src="./img/pano/PANO_20160726_162209.jpg" id="img-photosphere-2">
       <img src="./img/pano/PANO_20160726_161315.jpg" id="img-photosphere-3">
+      <img src="./img/pano/jomfru.jpg" id="img-photosphere-4">
 
       <!-- Menu thumbnails -->
       <img src="./img/AM logo.png" id="img-photosphere-1-thumb">
@@ -109,11 +110,14 @@
       <img id="texture-26-umami" src="resources/musicians/Umami Riddim Band.png">
     </a-assets>
 
+    <!-- CURSOR -->
     <a-entity position="0 1.8 5">
             <a-entity
                 id="camera"
                 camera="far: 10000; fov: 80; near: 0.5;"
                 look-controls="enabled: true">
+
+                <!-- MENU CURSOR -->
                 <a-entity
                     cursor="fuse: false; maxDistance: 500; timeout: 3000;"
                     id="cursor"
@@ -122,6 +126,8 @@
                     material="color: red; shader: flat;"
                     visible="false">
                 </a-entity>
+
+                <!-- MAIN CURSOR -->
                 <a-entity
                     cursor="fuse: false; maxDistance: 500; timeout: 3000;"
                     id="cursor-main"
@@ -140,13 +146,13 @@
             </a-entity>
         </a-entity>
         <a-entity position= "0 10 0" visible="false">
-
     </a-entity>
 
+    <!-- MENU -->
     <a-entity data-current-page="1" isvr-photosphere-menu id="photosphere-menu" visible="false" >
       <a-entity cursor position="0 0 -5"></a-entity>
 
-      <a-image data-image-id="1" isvr-photosphere-menu-thumb class="img-photosphere-thumb" src="#img-photosphere-1-thumb" width="2" height="0.7" position="-0.5 0.8 0" fit-texure scale="0.5">
+      <a-image data-image-id="1" isvr-photosphere-menu-thumb class="img-photosphere-thumb" onclick="toIndex()" src="#img-photosphere-1-thumb" width="2" height="0.7" position="-0.5 0.8 0" fit-texure scale="0.5">
           <a-animation attribute="position" begin="mouseenter" from="-0.5 0.8 0" to="-0.5 0.8 0.5" dur="400"></a-animation>
           <a-animation attribute="position" begin="mouseleave" from="-0.5 0.8 0.5" to="-0.5 0.8 0" dur="400"></a-animation>
           <a-animation attribute="material.opacity" begin="ease" to="1"></a-animation>
@@ -194,12 +200,22 @@
       <a-image src="#logo" fit-texure scale="1.0" position="0 0 5.4" rotation="0 180 0">
       </a-image>
     </a-entity>
+
+    <!-- SCENES (SWITCHING VISIBILITY BY JS)-->
     <a-entity
+         id="landing">
+         <a-sky color="#111"></a-sky>
+         <a-plane src="#floor" rotation="-90 0 0" height="100" width="100"></a-plane>
+
+    </a-entity>
+
+    <a-entity visible="false"
         geometry="primitive:sphere;radius:5000;segmentsWidth:64;segmentsHeight:64"
         material="shader:flat;color:#ffffff;fog:false; src:#img-photosphere-1 "
         scale="-1 1 1"
         rotation="0 -60 0" id="photosphere">
     </a-entity>
+
     <a-entity id="scene2" visible="false">
       <a-entity layout="type: circle; radius: 5;" position="0 -1 2.7" >
         <a-box geometry="primitive: box" material="src: #texture-22-facaden" width="2" height="2" depth="2" sound="src: aamaze-sound/Facaden - Spytter Som En Gal Feat. Lil-D (Officiel Musikvideo).mp3;"
@@ -232,8 +248,6 @@
         onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
         <a-box geometry="primitive: box" material="src: #texture-12-smokingvoices" width="2" height="2" depth="2" sound="src: aamaze-sound/Smoking Voices - Vildspor.mp3;"
         onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
-        <a-box geometry="primitive: box" material="src: #texture-13-sortefugle" width="2" height="2" depth="2" sound="src: aamaze-sound/SORTE FUGLE - NYT LIV.mp3;"
-        onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
         <a-box geometry="primitive: box" material="src: #texture-14-suitsboulevard" width="2" height="2" depth="2" sound="src: aamaze-sound/Suits Boulevard - Ocean of Lights.mp3;"
         onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
       </a-entity>
@@ -261,32 +275,45 @@
         <a-box geometry="primitive: box" material="src: #texture-26-umami" width="2" height="2" depth="2" sound="src: aamaze-sound/---------------------------------.mp3;"
         onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle" ></a-box>
       </a-entity>
+      <a-box geometry="primitive: box" position="0.5 8 5.5" material="src: #texture-13-sortefugle" width="2" height="2" depth="2" sound="src: aamaze-sound/SORTE FUGLE - NYT LIV.mp3;"
+        onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
       <a-entity id="middle" position="0 0 2.7"></a-entity>
       <a-sky color="#6EBAA7"></a-sky>
     </a-entity>
+
     <a-entity id="scene3" visible="false">
 
     </a-entity>
   </a-scene>
   <script>
-    // document.querySelector('#id').addEventListener('click', function () {
-    //   window.location = "#location1";
-    // });
+    // Turn on landing page
+    function toIndex() {
 
-    // Turn on scene2-musicians cubes
+      document.querySelector('#photosphere-menu').setAttribute('visible', false);
+      document.querySelector('#cursor-main').setAttribute('visible', true);
+      document.querySelector('#photosphere').setAttribute('visible', false);
+      document.querySelector('#scene2').setAttribute('visible', false);
+      document.querySelector('#scene3').setAttribute('visible', false);
+      document.querySelector('#landing').setAttribute('visible', true);
+      document.querySelector('#photosphere').setAttribute('material', 'src', 1);
+    }
+    // Turn on scene2-(musicians cubes)
     function newScene() {
         document.querySelector('#photosphere-menu').setAttribute('visible', false);
         document.querySelector('#cursor-main').setAttribute('visible', true);
         document.querySelector('#photosphere').setAttribute('visible', false);
         document.querySelector('#scene2').setAttribute('visible', true);
+        document.querySelector('#scene3').setAttribute('visible', false);
+        document.querySelector('#landing').setAttribute('visible', false);
       };
-    // Turn on scene3-program
+    // Turn on scene3-(program)
     function newSceneProgram() {
         document.querySelector('#photosphere-menu').setAttribute('visible', false);
         document.querySelector('#cursor-main').setAttribute('visible', true);
         document.querySelector('#photosphere').setAttribute('visible', false);
         document.querySelector('#scene2').setAttribute('visible', false);
         document.querySelector('#scene3').setAttribute('visible', true);
+        document.querySelector('#landing').setAttribute('visible', false);
     };
 
     // Close menu event
@@ -295,20 +322,20 @@
         document.querySelector('#cursor-main').setAttribute('visible', true);
       };
 
-
+    // Sound control
     function playSong() {
     var self = event.target
     self.components.sound.play();
     self.setAttribute('geometry', 'width', '2.5');
     self.setAttribute('geometry', 'height', '2.5');
-};
+      };
 
     function pauseSong() {
         var self = event.target
-        self.components.sound.pause();
+        self.components.sound.stop();
         self.setAttribute('geometry', 'width', '2');
         self.setAttribute('geometry', 'height', '2');
-    };
+      };
 
 
 
