@@ -212,7 +212,7 @@ AFRAME.registerShader('SkyShader.js', { schema: {
 
       "// composition + solar disc",
       "//if (cosTheta > sunAngularDiameterCos)",
-      "float sundisk = smoothstep(sunAngularDiameterCos,sunAngularDiameterCos+0.00002,cosTheta);",
+      "float sundisk = smoothstep(sunAngularDiameterCos,sunAngularDiameterCos+0.01002,cosTheta);",
       "// if (normalize(vWorldPosition - cameraPos).y>0.0)",
       "L0 += (sunE * 19000.0 * Fex)*sundisk;",
 
@@ -321,10 +321,10 @@ THREE.Sky = function () {
       <audio id="sound23-virtus" src="aamaze-sound/Virtus - Angel In Disguise [TV Bingo].mp3"></audio>
       <audio id="sound24-wolff" src="aamaze-sound/WOLFF x El Peligro - For mig Selv.mp3"></audio>
 
-      <img id="floor" src="./img/noisy-texture.png">
+      <img id="floor" src="./img/grasslight-big.jpg">
       <img id="redirect" src="./img/redirect.png">
       <img id="sky" src="./img/pano/sky.jpg">
-
+      <a-asset-item id="tree" src="models/tree2.dae"></a-asset-item>
       <!-- Icons -->
       <img id="space-ico" src="img/space.png" alt="">
       <img id="tap-ico" src="img/tap.png" alt="">
@@ -404,7 +404,7 @@ THREE.Sky = function () {
                     cursor="fuse: false; maxDistance: 500; timeout: 3000;"
                     id="cursor-main"
                     position="0 0 -2"
-                    geometry="primitive: ring; radiusOuter: 0.07; radiusInner: 0.03;"
+                    geometry="primitive: ring; radiusOuter: 0.07; radiusInner: 0.035;"
                     material="color: green; shader: flat;"
                     >
                     <a-entity scale="0.4 0.4 0.4" bmfont-text="text:" position="0 -0.5 0">
@@ -480,13 +480,18 @@ THREE.Sky = function () {
     <!-- SCENES (SWITCHING VISIBILITY BY JS)-->
     <a-entity
          id="landing">
-          <a-entity id="sky" geometry="primitive: sphere; radius: 100;"
+
+          <a-entity id="sky" geometry="primitive: sphere; radius: 200;"
                 material="shader: sky; side: back" sun-position-setter>
-        <a-entity id="orbit">
-          <!-- <a-animation attribute="rotation" from="0 0 0" to="360 10 360" dur="5000"
-                       repeat="indefinite" easing="ease"></a-animation> -->
-        </a-entity>
-      </a-entity>
+            <a-entity id="orbit">
+              <a-animation attribute="rotation" from="0 0 0" to="0 0 0" dur="5000"
+                           repeat="indefinite" easing="ease"></a-animation>
+            </a-entity>
+          </a-entity>
+        <a-entity geometry="primitive: plane; width: 100; height: 100;" material="src: #floor;metalness: .2; repeat: 50 20; roughness: .1" rotation="-90 0 0" position="0 -1 47.5"></a-entity>
+        <a-ocean color="#92E2E2" width="100" depth="25" density="15" speed="2" position="0 -1.3 -15"></a-ocean>
+        <a-entity collada-model="#tree" scale="0.5 0.5 0.5" position="1 0 1.7 "></a-entity>
+        <a-entity light="color: #92E2E2; intensity: 0.75" position="0 -2 -35"></a-entity>
 
     </a-entity>
 
@@ -560,20 +565,22 @@ THREE.Sky = function () {
       <a-entity id="middle" position="0 0 2.7"></a-entity>
       <a-sky shader="SkyShader.js"></a-sky>
 
-          <a-sphere position="0 0 0" radius="4000" src="#sky" side="back" opacity=".4" rotation="0 0 -23.5">
-            <a-animation attribute="rotation" repeat="indefinite" dur="100000" easing="linear" to="-360 0 0"></a-animation>
-          </a-sphere>
+      <a-sphere position="0 0 0" radius="4000" src="#sky" side="back" opacity=".4" rotation="0 0 -23.5">
+        <a-animation attribute="rotation" repeat="indefinite" dur="100000" easing="linear" to="-360 0 0"></a-animation>
+      </a-sphere>
 
     </a-entity>
 
     <a-entity id="scene3" visible="false">
       <a-entity id="sky" geometry="primitive: sphere; radius: 100;"
                 material="shader: sky; side: back" sun-position-setter>
-        <a-entity id="orbit">
+        <a-entity id="orbit" rotation="0 0 0">
           <a-animation attribute="rotation" from="0 0 0" to="0 360 0" dur="5000"
                        repeat="indefinite" easing="linear"></a-animation>
         </a-entity>
       </a-entity>
+      <a-entity geometry="primitive: plane; width: 100; height: 100;" material="src: #floor;" rotation="-90 0 0" position="0 -1 47.5"></a-entity>
+      <a-ocean color="#92E2E2" width="100" depth="25" density="15" speed="2" position="0 -1.3 -15"></a-ocean>
     </a-entity>
   </a-scene>
   <script>
@@ -628,16 +635,12 @@ THREE.Sky = function () {
         self.setAttribute('geometry', 'height', '2');
       };
 
-
-
-
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-xxxxxxx-x', 'auto');
+    ga('create', 'UA-82205701-1', 'auto');
     ga('send', 'pageview');
-
 
   </script>
 
