@@ -501,9 +501,7 @@ THREE.Sky = function () {
       <a-entity light="type: hemisphere; color: #33C; groundColor: #3C3; intensity: 2"></a-entity>
       <a-entity layout="type: circle; radius: 5;" position="0 -1 2.7" >
         <a-box geometry="primitive: box" material="src: #texture-22-facaden" width="2" height="2" depth="2" sound="src: aamaze-sound/Facaden - Spytter Som En Gal Feat. Lil-D (Officiel Musikvideo).mp3;"
-        onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle">
-          <a-animation attribute="velocity" begin="click" from="0 0 0" to="0 1 0" dur="5000" easing="ease-in-out-cubic"></a-animation>
-        </a-box>
+        onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
         <a-box geometry="primitive: box" material="src: #texture-1-between" width="2" height="2" depth="2"  sound="src: aamaze-sound/Between Between - more of you.mp3;"
         onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
         <a-box geometry="primitive: box" material="src: #texture-2-danskespor" width="2" height="2" depth="2"  sound="src: aamaze-sound/Danske Spor - Alle Disse Hoveder.mp3;"
@@ -561,12 +559,11 @@ THREE.Sky = function () {
         onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
       <a-entity id="middle" position="0 0 2.7"></a-entity>
       <a-sky shader="SkyShader.js"></a-sky>
-          <a-plane color="black" width="10000" height="10000" rotation="-90 0 0"></a-plane>
+
           <a-sphere position="0 0 0" radius="4000" src="#sky" side="back" opacity=".4" rotation="0 0 -23.5">
             <a-animation attribute="rotation" repeat="indefinite" dur="100000" easing="linear" to="-360 0 0"></a-animation>
           </a-sphere>
-          <a-light type="hemisphere" color="white" intensity="1"></a-light>
-          <a-entity mixin="ambient" position="0 0 -40"></a-entity>
+
     </a-entity>
 
     <a-entity id="scene3" visible="false">
