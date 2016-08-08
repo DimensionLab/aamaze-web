@@ -9,7 +9,7 @@
 
     <script src="aframe.min.js"></script>
 
-
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v1.17.0/dist/aframe-extras.min.js"></script>
     <script src="https://rawgit.com/ngokevin/aframe-look-at-component/master/dist/aframe-look-at-component.min.js"></script>
     <script src="https://rawgit.com/ngokevin/aframe-layout-component/master/dist/aframe-layout-component.min.js"></script>
     <script src="https://rawgit.com/ngokevin/aframe-text-component/master/dist/aframe-text-component.min.js"></script>
@@ -21,7 +21,6 @@
     <script src="js/components/isvr_photosphere_menu_thumb.js"></script>
     <script src="js/components/isvr_photosphere_menu_navigation.js"></script>
 
-    <!-- <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v2.2.0/dist/aframe-extras.min.js"></script> -->
   </head>
 
   <body>
@@ -117,7 +116,8 @@
             <a-entity
                 id="camera"
                 camera="far: 10000; fov: 80; near: 0.5;"
-                look-controls="enabled: true">
+                look-controls="enabled: true"
+                universal-controls>
 
                 <!-- MENU CURSOR -->
                 <a-entity
@@ -180,7 +180,7 @@
       </a-image>
 
 
-      <a-image data-image-id="5" isvr-photosphere-menu-thumb class="img-photosphere-thumb" onclick="newSceneProgram()"" src="#img-photosphere-5-thumb" width="2" height="0.4" position="0 -0.7 0">
+      <a-image data-image-id="5" isvr-photosphere-menu-thumb class="img-photosphere-thumb" onclick="newSceneProgram()" src="#img-photosphere-5-thumb" width="2" height="0.4" position="0 -0.7 0">
           <a-animation attribute="position" begin="mouseenter" from="0 -0.7 0" to="0 -0.7 0.5" dur="400"></a-animation>
           <a-animation attribute="position" begin="mouseleave" from="0 -0.7 0.5" to="0 -0.7 0" dur="400"></a-animation>
           <a-animation attribute="material.opacity" begin="fade" to="1"></a-animation>
@@ -194,7 +194,7 @@
           <a-animation attribute="material.opacity" begin="fade" to="1"></a-animation>
       </a-image>
 
-      <a-image onclick="closeMenu()"" src="#close-x" position="0 -1.9 0" width="0.4" height="0.4" rotation="-30 0 0">
+      <a-image onclick="closeMenu()" src="#close-x" position="0 -1.9 0" width="0.4" height="0.4" rotation="-30 0 0">
           <a-animation attribute="rotation" begin="mouseenter" from="-30 0 0" to="-30 360 0" dur="500"></a-animation>
           <a-animation attribute="material.opacity" begin="fade" to="0.3"></a-animation>
       </a-image>
