@@ -212,7 +212,7 @@ AFRAME.registerShader('SkyShader.js', { schema: {
 
       "// composition + solar disc",
       "//if (cosTheta > sunAngularDiameterCos)",
-      "float sundisk = smoothstep(sunAngularDiameterCos,sunAngularDiameterCos+0.00002,cosTheta);",
+      "float sundisk = smoothstep(sunAngularDiameterCos,sunAngularDiameterCos+0.01002,cosTheta);",
       "// if (normalize(vWorldPosition - cameraPos).y>0.0)",
       "L0 += (sunE * 19000.0 * Fex)*sundisk;",
 
