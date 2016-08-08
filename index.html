@@ -8,14 +8,14 @@
     <meta name="apple-mobile-web-app-capable" content="yes"> <!-- Fullscreen Landscape on iOS -->
 
     <script src="aframe.min.js"></script>
-    <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+
 
     <script src="https://rawgit.com/ngokevin/aframe-look-at-component/master/dist/aframe-look-at-component.min.js"></script>
     <script src="https://rawgit.com/ngokevin/aframe-layout-component/master/dist/aframe-layout-component.min.js"></script>
     <script src="https://rawgit.com/ngokevin/aframe-text-component/master/dist/aframe-text-component.min.js"></script>
     <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
 
-    <script src="js/aframe-no-click-look-controls.min.js"></script>
+    <script src="js/no-click-look-controls.js"></script>
 
     <script src="js/components/isvr_photosphere_menu.js"></script>
     <script src="js/components/isvr_photosphere_menu_thumb.js"></script>
@@ -29,7 +29,7 @@
     <a-assets>
       <!-- AUDIO ASSETS -->
       <audio id="sound1-facaden" src="aamaze-sound/Facaden - Spytter Som En Gal Feat. Lil-D (Officiel Musikvideo).mp3"></audio>
-      <audio id="sound2" src="aamaze-sound/Aztek-FromYou.mp3"></audio>
+      <audio id="sound2-aztek" src="aamaze-sound/Aztek-FromYou.mp3"></audio>
       <audio id="sound3-between" src="aamaze-sound/Between Between - more of you.mp3"></audio>
       <audio id="sound4-bluecells" src="aamaze-sound/Blue Cells - Bordeaux.mp3"></audio>
       <audio id="sound5-danskespor" src="aamaze-sound/Danske Spor - Alle Disse Hoveder.mp3"></audio>
@@ -53,31 +53,35 @@
       <audio id="sound23-virtus" src="aamaze-sound/Virtus - Angel In Disguise [TV Bingo].mp3"></audio>
       <audio id="sound24-wolff" src="aamaze-sound/WOLFF x El Peligro - For mig Selv.mp3"></audio>
 
-
-
       <img id="floor" src="./img/noisy-texture.png">
-      <img id="logo" src="./img/logo.jpg">
       <img id="redirect" src="./img/redirect.png">
-
+      <img id="landing-sky" src="./img/pano/download.png">
 
       <!-- Icons -->
       <img id="space-ico" src="img/space.png" alt="">
       <img id="tap-ico" src="img/tap.png" alt="">
-      <img id="vr-ico" src="img/vr.png" alt="">
-      <img id="close-x" src="img/x.png" alt="">
+      <img id="vr-ico" src="img/vr_button.png" alt="">
+      <img id="close-x" src="img/x_button.png" alt="">
+      <img id="line" src="img/line.png" alt="">
 
       <!-- Photo spheres -->
       <img src=".//img" id="img-photosphere-1">
       <img src="./img/pano/PANO_20160726_162209.jpg" id="img-photosphere-2">
       <img src="./img/pano/PANO_20160726_161315.jpg" id="img-photosphere-3">
+      <img src="./img/pano/jomfru.jpg" id="img-photosphere-4">
 
       <!-- Menu thumbnails -->
       <img src="./img/AM logo.png" id="img-photosphere-1-thumb">
-      <img src="./img/location1.jpg" id="img-photosphere-2-thumb">
-      <img src="./img/locaton2.jpg" id="img-photosphere-3-thumb">
-      <img src="./img/locaton2.jpg" id="img-photosphere-4-thumb">
+      <img src="./img/location2-new.jpg" id="img-photosphere-2-thumb">
+      <img src="./img/location1-new.jpg" id="img-photosphere-3-thumb">
+      <img src="./img/locaton3-new.jpg" id="img-photosphere-4-thumb">
       <img src="./img/program.jpg" id="img-photosphere-5-thumb">
-      <img src="./img/artists.jpg" id="img-photosphere-6-thumb">
+      <img src="./img/musicians.jpg" id="img-photosphere-6-thumb">
+
+      <!-- MENU ASSETS -->
+      <img id="logo" src="./img/logo.jpg">
+      <img id="support" src="./img/support.jpg">
+      <img id="sponsors" src="./img/sponsors.png">
 
       <!-- Textures -->
       <img id="texture-1-between" src="resources/musicians/BETWEENbetween.jpg">
@@ -108,11 +112,14 @@
       <img id="texture-26-umami" src="resources/musicians/Umami Riddim Band.png">
     </a-assets>
 
+    <!-- CURSOR -->
     <a-entity position="0 1.8 5">
             <a-entity
                 id="camera"
                 camera="far: 10000; fov: 80; near: 0.5;"
                 look-controls="enabled: true">
+
+                <!-- MENU CURSOR -->
                 <a-entity
                     cursor="fuse: false; maxDistance: 500; timeout: 3000;"
                     id="cursor"
@@ -121,6 +128,8 @@
                     material="color: red; shader: flat;"
                     visible="false">
                 </a-entity>
+
+                <!-- MAIN CURSOR -->
                 <a-entity
                     cursor="fuse: false; maxDistance: 500; timeout: 3000;"
                     id="cursor-main"
@@ -128,22 +137,24 @@
                     geometry="primitive: ring; radiusOuter: 0.07; radiusInner: 0.03;"
                     material="color: green; shader: flat;"
                     >
-                    <a-entity scale="0.9 0.9 0.9" bmfont-text="text:" position="-1.6 -0.5 0">
-                      <a-image src="#space-ico" width="0.4" height="0.4" position="0 0 0"></a-image>
-                      <a-image src="#tap-ico" width="0.4" height="0.4" position="1 0 0"></a-image>
-                      <a-image src="#vr-ico" width="0.4" height="0.4" position="2 0 0"></a-image>
+                    <a-entity scale="0.4 0.4 0.4" bmfont-text="text:" position="0 -0.5 0">
+                      <a-image src="#space-ico" width="0.5" height="0.5" position="-0.8 0 0"></a-image>
+                      <a-image src="#line" width="0.3" height="0.3" position="-0.35 0 0" rotation="0 0 65"></a-image>
+                      <a-image src="#tap-ico" width="0.5" height="0.5" position="0 0 0"></a-image>
+                      <a-image src="#line" width="0.3" height="0.3" position="0.35 0 0" rotation="0 0 65"></a-image>
+                      <a-image src="#vr-ico" width="0.5" height="0.5" position="0.8 0 0"></a-image>
                     </a-entity>
                 </a-entity>
             </a-entity>
         </a-entity>
         <a-entity position= "0 10 0" visible="false">
-
     </a-entity>
 
+    <!-- MENU -->
     <a-entity data-current-page="1" isvr-photosphere-menu id="photosphere-menu" visible="false" >
       <a-entity cursor position="0 0 -5"></a-entity>
 
-      <a-image data-image-id="1" isvr-photosphere-menu-thumb class="img-photosphere-thumb" src="#img-photosphere-1-thumb" width="2" height="0.7" position="-0.5 0.8 0" fit-texure scale="0.5">
+      <a-image data-image-id="1" isvr-photosphere-menu-thumb class="img-photosphere-thumb" onclick="toIndex()" src="#img-photosphere-1-thumb" width="2" height="0.7" position="-0.5 0.8 0" fit-texure scale="0.5">
           <a-animation attribute="position" begin="mouseenter" from="-0.5 0.8 0" to="-0.5 0.8 0.5" dur="400"></a-animation>
           <a-animation attribute="position" begin="mouseleave" from="-0.5 0.8 0.5" to="-0.5 0.8 0" dur="400"></a-animation>
           <a-animation attribute="material.opacity" begin="ease" to="1"></a-animation>
@@ -169,7 +180,7 @@
       </a-image>
 
 
-      <a-image data-image-id="5" isvr-photosphere-menu-thumb class="img-photosphere-thumb" src="#img-photosphere-5-thumb" width="2" height="0.4" position="0 -0.7 0">
+      <a-image data-image-id="5" isvr-photosphere-menu-thumb class="img-photosphere-thumb" onclick="newSceneProgram()"" src="#img-photosphere-5-thumb" width="2" height="0.4" position="0 -0.7 0">
           <a-animation attribute="position" begin="mouseenter" from="0 -0.7 0" to="0 -0.7 0.5" dur="400"></a-animation>
           <a-animation attribute="position" begin="mouseleave" from="0 -0.7 0.5" to="0 -0.7 0" dur="400"></a-animation>
           <a-animation attribute="material.opacity" begin="fade" to="1"></a-animation>
@@ -188,39 +199,67 @@
           <a-animation attribute="material.opacity" begin="fade" to="0.3"></a-animation>
       </a-image>
 
-      <a-image src="#logo" fit-texure scale="1.0" position="0 0 5.4" rotation="0 180 0">
+      <a-image src="#logo" fit-texure scale="1.0" position="0 -0.3 5.4" rotation="-36 174 0">
+      </a-image>
+      <a-image src="#sponsors" fit-texure scale="2.0" position="1.3 -0.5 4" rotation="-36 270 0">
+      </a-image>
+      <a-image src="#support" fit-texure scale="2.0" position="-1.5 -0.5 4" rotation="-36 90 0">
       </a-image>
     </a-entity>
+
+    <!-- SCENES (SWITCHING VISIBILITY BY JS)-->
     <a-entity
+         id="landing">
+         <a-sky src="#landing-sky" radius="10000"></a-sky>
+
+         <a-plane rotation="-90 -0.1 0" color="#CD853F" position="0 -1 0" height="200" width="200" roughness="0.75"></a-plane>
+          <!-- Mountain Range -->
+          <a-entity class="mountain" position="80 0 -80">
+
+          <a-cone color="#CD853F" radius-top="0.2" radius-bottom="1.5" height="8" position="0 3 0" ></a-cone>
+            <a-cone color="#CD853F" radius-top="0.25" radius-bottom="1.5" height="3" position="2 0.5 0" ></a-cone>
+            <a-cone color="#CD853F" radius-top="0.25" radius-bottom="1.5" height="2" position="4 0 0" ></a-cone>
+          </a-entity>
+
+              <a-entity class="mountain" position="50 0 -75">
+
+            <a-cone color="#CD853F" radius-top="0.75" radius-bottom="1.5" height="8" position="0 3 0" ></a-cone>
+            <a-cone color="#CD853F" radius-top="0.25" radius-bottom="1.5" height="3" position="2 0.5 0" ></a-cone>
+            <a-cone color="#CD853F" radius-top="0.25" radius-bottom="1.5" height="2" position="4 1 0" ></a-cone>
+          </a-entity>
+
+          <a-entity class="mountain" position="45 0 -75">
+            <a-cone color="#CD853F" radius-top="0.1" radius-bottom="1" height="8" position="0 3 0" ></a-cone>
+            <a-cone color="#CD853F" radius-top="0.25" radius-bottom="1.5" height="3" position="-2 0.5 0" ></a-cone>
+          </a-entity>
+
+              <a-entity class="mountain" position="-10 0 -90">
+
+          <a-cone color="#CD853F" radius-top="0.2" radius-bottom="1.5" height="8" position="0 3 0" ></a-cone>
+            <a-cone color="#CD853F" radius-top="0.25" radius-bottom="1.5" height="3" position="2 0.5 0" ></a-cone>
+            <a-cone color="#CD853F" radius-top="0.25" radius-bottom="1.5" height="2" position="4 0 0" ></a-cone>
+          </a-entity>
+
+          <a-entity class="mountain" position="-25 0 -50">
+            <a-cone color="#CD853F" radius-top="0.75" radius-bottom="1.5" height="8" position="0 3 0" ></a-cone>
+            <a-cone color="#CD853F" radius-top="0.25" radius-bottom="1.5" height="3" position="2 0.5 0" ></a-cone>
+            <a-cone color="#CD853F" radius-top="0.25" radius-bottom="1.5" height="2" position="4 0 0" ></a-cone>
+          </a-entity>
+
+              <a-entity class="mountain" position="-60 0 -75">
+            <a-cone color="#CD853F" radius-top="0.1" radius-bottom="1" height="8" position="0 3 0" ></a-cone>
+            <a-cone color="#CD853F" radius-top="0.25" radius-bottom="1.5" height="3" position="-2 0.5 0" ></a-cone>
+          </a-entity>
+        </a-entity>
+    </a-entity>
+
+    <a-entity visible="false"
         geometry="primitive:sphere;radius:5000;segmentsWidth:64;segmentsHeight:64"
         material="shader:flat;color:#ffffff;fog:false; src:#img-photosphere-1 "
         scale="-1 1 1"
         rotation="0 -60 0" id="photosphere">
     </a-entity>
-      <audio id="sound1-facaden" src="aamaze-sound/Facaden - Spytter Som En Gal Feat. Lil-D (Officiel Musikvideo).mp3"></audio>
-      <audio id="sound2-aztek" src="aamaze-sound/Aztek-FromYou.mp3"></audio>
-      <audio id="sound3-between" src="aamaze-sound/Between Between - more of you.mp3"></audio>
-      <audio id="sound4-bluecells" src="aamaze-sound/Blue Cells - Bordeaux.mp3"></audio>
-      <audio id="sound5-danskespor" src="aamaze-sound/Danske Spor - Alle Disse Hoveder.mp3"></audio>
-      <audio id="sound6-drowned" src="aamaze-sound/Drowned Session - The Winter Way.mp3"></audio>
-      <audio id="sound7-dustyawe" src="aamaze-sound/Dusty Awe - Angst (feat. Memory Boys).mp3"></audio>
-      <audio id="sound8-enmand" src="aamaze-sound/En Mand Stærk - Bænken.mp3"></audio>
-      <audio id="sound9-franciska" src="aamaze-sound/Franciska - Another Life (Teaser).mp3"></audio>
-      <audio id="sound10-kazpa" src="aamaze-sound/Kazpa G - Gadetalent.mp3"></audio>
-      <audio id="sound11-kernefamilien" src="aamaze-sound/Kernefamilien - Psykopat.mp3"></audio>
-      <audio id="sound12-markking" src="aamaze-sound/Mark King - Alene Nu.mp3"></audio>
-      <audio id="sound13-momcalls" src="aamaze-sound/Mom Calls Me Thunder - Cannon Baby (Official Music Video).mp3"></audio>
-      <audio id="sound14-nicotine" src="aamaze-sound/Nicotine Nerves - SKin Tight Shoes.mp3"></audio>
-      <audio id="sound15-pepenero" src="aamaze-sound/PepeNero - Let Time Do Its Thing.mp3"></audio>
-      <audio id="sound16-perlefar" src="aamaze-sound/PerleFar - Pigen Med Det Røde Hår.mp3"></audio>
-      <audio id="sound17-phaun" src="aamaze-sound/Phaun - En Af De Andre.mp3"></audio>
-      <audio id="sound18-royal" src="aamaze-sound/Royal Feet Factory - Closer To My Body (Official Music Video).mp3"></audio>
-      <audio id="sound19-smoking" src="aamaze-sound/Smoking Voices - Vildspor.mp3"></audio>
-      <audio id="sound20-sortefugle" src="aamaze-sound/SORTE FUGLE - NYT LIV.mp3"></audio>
-      <audio id="sound21-suits" src="aamaze-sound/Suits Boulevard - Ocean of Lights.mp3"></audio>
-      <audio id="sound22-tinevingaard" src="aamaze-sound/Tine Vingaard - Lover (2013).mp3"></audio>
-      <audio id="sound23-virtus" src="aamaze-sound/Virtus - Angel In Disguise [TV Bingo].mp3"></audio>
-      <audio id="sound24-wolff" src="aamaze-sound/WOLFF x El Peligro - For mig Selv.mp3"></audio>
+
     <a-entity id="scene2" visible="false">
       <a-entity layout="type: circle; radius: 5;" position="0 -1 2.7" >
         <a-box geometry="primitive: box" material="src: #texture-22-facaden" width="2" height="2" depth="2" sound="src: aamaze-sound/Facaden - Spytter Som En Gal Feat. Lil-D (Officiel Musikvideo).mp3;"
@@ -233,7 +272,7 @@
         onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
         <a-box geometry="primitive: box" material="src: #texture-3-drownedsession" width="2" height="2" depth="2"  sound="src: aamaze-sound/Drowned Session - The Winter Way.mp3;"
         onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
-        <a-box geometry="primitive: box" material="src: #texture-4-dustyawe" width="2" height="2" depth="2"  sound="src: aamaze-sound/aamaze-sound/Dusty Awe - Angst (feat. Memory Boys).mp3;"
+        <a-box geometry="primitive: box" material="src: #texture-4-dustyawe" width="2" height="2" depth="2"  sound="src: aamaze-sound/Dusty Awe - Angst (feat. Memory Boys).mp3;"
         onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
         <a-box geometry="primitive: box" material="src: #texture-5-kernefamilien" width="2" height="2" depth="2"  sound="src: aamaze-sound/Kernefamilien - Psykopat.mp3;"
         onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
@@ -252,8 +291,6 @@
         <a-box geometry="primitive: box" material="src: #texture-11-royalfeetfactory" width="2" height="2" depth="2" sound="src: aamaze-sound/Royal Feet Factory - Closer To My Body (Official Music Video).mp3;"
         onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
         <a-box geometry="primitive: box" material="src: #texture-12-smokingvoices" width="2" height="2" depth="2" sound="src: aamaze-sound/Smoking Voices - Vildspor.mp3;"
-        onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
-        <a-box geometry="primitive: box" material="src: #texture-13-sortefugle" width="2" height="2" depth="2" sound="src: aamaze-sound/SORTE FUGLE - NYT LIV.mp3;"
         onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
         <a-box geometry="primitive: box" material="src: #texture-14-suitsboulevard" width="2" height="2" depth="2" sound="src: aamaze-sound/Suits Boulevard - Ocean of Lights.mp3;"
         onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
@@ -282,25 +319,45 @@
         <a-box geometry="primitive: box" material="src: #texture-26-umami" width="2" height="2" depth="2" sound="src: aamaze-sound/---------------------------------.mp3;"
         onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle" ></a-box>
       </a-entity>
+      <a-box geometry="primitive: box" position="0.5 8 5.5" material="src: #texture-13-sortefugle" width="2" height="2" depth="2" sound="src: aamaze-sound/SORTE FUGLE - NYT LIV.mp3;"
+        onmouseenter="playSong()" onmouseleave="pauseSong()" look-at="#middle"></a-box>
       <a-entity id="middle" position="0 0 2.7"></a-entity>
       <a-sky color="#6EBAA7"></a-sky>
     </a-entity>
+
     <a-entity id="scene3" visible="false">
+
     </a-entity>
   </a-scene>
   <script>
-    // document.querySelector('#id').addEventListener('click', function () {
-    //   window.location = "#location1";
-    // });
-    //
+    // Turn on landing page
+    function toIndex() {
+
+      document.querySelector('#photosphere-menu').setAttribute('visible', false);
+      document.querySelector('#cursor-main').setAttribute('visible', true);
+      document.querySelector('#photosphere').setAttribute('visible', false);
+      document.querySelector('#scene2').setAttribute('visible', false);
+      document.querySelector('#scene3').setAttribute('visible', false);
+      document.querySelector('#landing').setAttribute('visible', true);
+      document.querySelector('#photosphere').setAttribute('material', 'src', 1);
+    }
+    // Turn on scene2-(musicians cubes)
     function newScene() {
         document.querySelector('#photosphere-menu').setAttribute('visible', false);
         document.querySelector('#cursor-main').setAttribute('visible', true);
         document.querySelector('#photosphere').setAttribute('visible', false);
         document.querySelector('#scene2').setAttribute('visible', true);
+        document.querySelector('#scene3').setAttribute('visible', false);
+        document.querySelector('#landing').setAttribute('visible', false);
       };
-    function newScene2() {
-
+    // Turn on scene3-(program)
+    function newSceneProgram() {
+        document.querySelector('#photosphere-menu').setAttribute('visible', false);
+        document.querySelector('#cursor-main').setAttribute('visible', true);
+        document.querySelector('#photosphere').setAttribute('visible', false);
+        document.querySelector('#scene2').setAttribute('visible', false);
+        document.querySelector('#scene3').setAttribute('visible', true);
+        document.querySelector('#landing').setAttribute('visible', false);
     };
 
     // Close menu event
@@ -309,20 +366,20 @@
         document.querySelector('#cursor-main').setAttribute('visible', true);
       };
 
-
+    // Sound control
     function playSong() {
     var self = event.target
     self.components.sound.play();
     self.setAttribute('geometry', 'width', '2.5');
     self.setAttribute('geometry', 'height', '2.5');
-};
+      };
 
     function pauseSong() {
         var self = event.target
-        self.components.sound.pause();
+        self.components.sound.stop();
         self.setAttribute('geometry', 'width', '2');
         self.setAttribute('geometry', 'height', '2');
-    };
+      };
 
 
 

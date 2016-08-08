@@ -24,7 +24,7 @@ AFRAME.registerComponent('isvr-photosphere-menu-thumb', {
           document.querySelector('#photosphere').setAttribute('visible', true);
           document.querySelector('#scene2').setAttribute('visible', false);
           document.querySelector('#scene3').setAttribute('visible', false);
-
+          document.querySelector('#landing').setAttribute('visible', false);
         }
       }
 
