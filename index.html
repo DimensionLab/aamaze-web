@@ -326,7 +326,7 @@ THREE.Sky = function () {
       <img id="sky" src="./img/pano/sky.jpg">
       <a-asset-item id="tree" src="models/tree2.dae"></a-asset-item>
       <img id="program" src="img/program-schedule.jpg" alt="">
-      <a-asset-item id="github-obj" src="/models/social/github.obj"></a-asset-item>
+      <a-asset-item id="github-obj" src="models/social/github.obj"></a-asset-item>
 
       <!-- Icons -->
       <img id="space-ico" src="img/space.png" alt="">
@@ -465,8 +465,6 @@ THREE.Sky = function () {
           <a-animation attribute="rotation" begin="mouseenter" from="0 0 0" to="-30 0 0" dur="400"></a-animation>
           <a-animation attribute="rotation" begin="mouseleave" from="-30 0 0" to="0 0 0" dur="400"></a-animation>
           <a-animation attribute="material.opacity" begin="fade" to="1"></a-animation>
-          <!-- <a-event name="mouseenter" target="#cursor" scale="1. 1. 1." ></a-event>
-          <a-event name="mouseleave" target="#cursor" scale="1 1 1"></a-event> -->
       </a-image>
 
       <a-image onclick="closeMenu()" src="#close-x" position="0 -1.9 0" width="0.4" height="0.4" rotation="-30 0 0">
